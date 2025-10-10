@@ -105,11 +105,10 @@ const Carousel3D = () => {
 
                         const absOffset = Math.abs(offset);
 
-                        // 3D position & transformation
-                        const translateX = offset * 200;      // horizontal distance between cards
-                        const translateZ = -absOffset * 80;   // depth for 3D perspective
-                        const rotateY = offset * -25;         // horizontal rotation
-                        const scale = offset === 0 ? 1 : 0.8; // center card larger
+                        const translateX = offset * 200;
+                        const translateZ = -absOffset * 80;
+                        const rotateY = offset * -25;
+                        const scale = offset === 0 ? 1 : 0.8;
 
                         return (
                             <div
