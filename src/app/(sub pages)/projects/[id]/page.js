@@ -75,8 +75,8 @@ export default function ProjectPage({ params }) {
             transition={{ delay: 0.6, duration: 2 }}
             className="absolute top-[12.2%] left-[30.8%] sm:left-[31.1%] md:left-[26%] h-[70%]
               w-[40.2%] sm:w-[39.2%] md:w-[50.2%] overflow-y-auto
-              bg-gradient-to-b from-black/85 to-black/60 border border-amber-400/40
-              backdrop-blur-md shadow-[0_0_25px_rgba(255,183,65,0.35)]
+              bg-gradient-to-b from-black/85 to-black/60 
+              backdrop-blur-md 
               flex flex-row items-stretch justify-between p-4 text-gray-200 gap-4
                text-left"
           >
