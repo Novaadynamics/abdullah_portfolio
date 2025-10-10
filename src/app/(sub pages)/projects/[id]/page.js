@@ -71,7 +71,7 @@ export default function ProjectPage({ params }) {
             <Image
               src={laptop}
               alt="Laptop"
-              className="object-contain w-full h-full drop-shadow-[0_5px_40px_rgba(255,160,50,0.4)]"
+              className="object-contain w-full h-full drop-shadow-[0_5px_10px_rgba(255,160,50,0.4)]"
               priority
             />
           </motion.div>
