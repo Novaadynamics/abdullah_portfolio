@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import bg from "../../../../../public/background/project-bg.png";
-import laptop from "../../../../../public/background/laptop-project.png";
+import bg_portfolio from "../../../../../public/background/bg-portfolio.png";
+import laptop from "../../../../../public/background/laptop-screen.png";
 import { projectsData } from "@/app/data";
 import { FaReact, FaNodeJs, FaDatabase, FaLock, FaCreditCard, FaComments, FaCog } from "react-icons/fa";
 
@@ -27,6 +28,13 @@ export default function ProjectPage({ params }) {
         priority
         fill
         className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-70 blur-[0.4px]"
+      />
+      <Image
+        src={bg_portfolio}
+        alt="background"
+        priority
+        fill
+        className="-z-40 fixed top-0 left-0 w-full h-full object-cover object-center opacity-70 blur-[0.4px]"
       />
 
       {/* Hero Section */}
