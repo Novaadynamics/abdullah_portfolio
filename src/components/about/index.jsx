@@ -4,7 +4,9 @@ import Link from "next/link";
 import { animate } from "framer-motion";
 
 const AboutDetails = () => {
-
+  // Github Username...
+  const username = "MA1002643";
+  
   //
   //
   // Get Public Repo Counts By Username Method...
@@ -22,8 +24,6 @@ const AboutDetails = () => {
   //
   // Repo Counts...
   const [count, setCount] = useState(0);
-  // Github Username...
-  const username = "MA1002643";
 
   // Get Repo Counts...
   useEffect(() => {
@@ -56,7 +56,7 @@ const AboutDetails = () => {
 
   //
   //
-  // Calculate Years of Exp
+  // Calculate Years of Exp...
   const [years, setYears] = useState(0);
   // Set your desired start date here
   const startDate = '2021-01-01T00:00:00';
@@ -143,7 +143,7 @@ const AboutDetails = () => {
         >
           <img
             className="w-full h-auto"
-            src={`https://github-readme-stats.vercel.app/api/top-langs/?username=MA1002643&theme=dark&show_icons=true&hide_border=true&bg_color=00000000&title_color=ffb03a`}
+            src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&theme=dark&show_icons=true&hide_border=true&bg_color=00000000&title_color=ffb03a`}
             alt="CodeBucks"
             loading="lazy"
           />
@@ -152,9 +152,9 @@ const AboutDetails = () => {
         <ItemLayout className={"col-span-full sm:col-span-6 md:col-span-6 !p-0"}>
           <img
             className="w-full h-auto"
-            src={`https://github-readme-streak-stats.herokuapp.com?user=MA1002643&theme=dark&hide_border=true&background=EB545400`}
-            // src={`https://github-readme-stats.vercel.app/api/top-langs/?username=MA1002643&theme=gruvbox&show_icons=true&hide_border=true&layout=compact`}
-            // src={`https://github-readme-stats.vercel.app/api?username=MA1002643`}
+            src={`https://streak-stats.demolab.com?user=${username}&theme=dark&hide_border=true&background=00000000`}
+            // src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&theme=gruvbox&show_icons=true&hide_border=true&layout=compact`}
+            // src={`https://github-readme-stats.vercel.app/api?username=${username}`}
             alt="CodeBucks"
             loading="lazy"
           />
@@ -163,7 +163,7 @@ const AboutDetails = () => {
         <ItemLayout className={" col-span-full sm:col-span-6 md:col-span-6 !p-0"}>
           <img
             className="w-full h-auto"
-            src={`https://github-readme-stats.vercel.app/api?username=MA1002643&theme=gruvbox&show_icons=true&hide_border=true&count_private=true&bg_color=00000000&title_color=ffb03a`}
+            src={`https://github-readme-stats.vercel.app/api?username=${username}&theme=gruvbox&show_icons=true&hide_border=true&count_private=true&bg_color=00000000&title_color=ffb03a`}
             alt="CodeBucks"
             loading="lazy"
           />
@@ -201,9 +201,9 @@ const AboutDetails = () => {
         {/* <ItemLayout className={"col-span-full md:col-span-6 !p-0"}>
           <img
             className="w-full h-auto"
-            src={`https://github-readme-streak-stats.herokuapp.com?user=MA1002643&theme=dark&hide_border=true&background=EB545400`}
-            // src={`https://github-readme-stats.vercel.app/api/top-langs/?username=MA1002643&theme=gruvbox&show_icons=true&hide_border=true&layout=compact`}
-            // src={`https://github-readme-stats.vercel.app/api?username=MA1002643`}
+            src={`https://github-readme-streak-stats.herokuapp.com?user=${username}&theme=dark&hide_border=true&background=EB545400`}
+            // src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&theme=gruvbox&show_icons=true&hide_border=true&layout=compact`}
+            // src={`https://github-readme-stats.vercel.app/api?username=${username}`}
             alt="CodeBucks"
             loading="lazy"
           />
@@ -217,7 +217,7 @@ const AboutDetails = () => {
           >
             <img
               className="w-full h-auto"
-              src={`https://github-readme-streak-stats.herokuapp.com?user=MA1002643&theme=dark&hide_border=true&background=EB545400`}
+              src={`https://github-readme-streak-stats.herokuapp.com?user=${username}&theme=dark&hide_border=true&background=EB545400`}
               alt="CodeBucks"
               loading="lazy"
             />
