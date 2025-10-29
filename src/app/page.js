@@ -3,14 +3,12 @@ import Image from 'next/image';
 import bg from '../../public/background/home-bg.png';
 import laptop from '../../public/background/laptop.png';
 import Navigation from '@/components/navigation';
-import FullScreenLoader from '@/components/FullScreenLoader';
 import { useState } from 'react';
 
 export default function Home() {
   const [hovered, setHovered] = useState(false);
   return (
     <>
-      <FullScreenLoader />
       {/* full-screen, semi-opaque bg image */}
       <Image
         priority
@@ -33,15 +31,15 @@ export default function Home() {
             Muhammad<br /> <span className='md:mr-7'>Abdullah</span>  
           </h1> */}
           <h1
-            className="text-transparent text-center md:text-right text-[4rem] font-[500] uppercase leading-none md:text-[7rem] lg:text-[8.5rem] text-glow-stroke-neon"
+            className="text-transparent text-center text-[3rem] font-[500] uppercase leading-none md:text-[6rem] lg:text-[7rem] text-glow-stroke-neon"
           >
-            Muhammad<br /> <span className="md:mr-[50px] text-[3.5rem] md:text-[6.5rem] lg:text-[8rem]">Abdullah</span>
+            Muhammad<br /> Abdullah
           </h1>
 
           {/* <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 text-[3rem] font-light uppercase leading-snug md:text-[3rem] lg:text-[3.3rem]">
             Software Developer
           </h2> */}
-          <h2 className="glitter-text mt-1 text-[2rem] md:text-[3rem] lg:text-[3.3rem] font-light uppercase leading-snug">
+          <h2 className="glitter-text mt-1 text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] font-light uppercase leading-snug">
             Software Engineer
           </h2>
 
@@ -55,7 +53,7 @@ export default function Home() {
               src={laptop}
               alt="laptop"
               // laptop
-              className={`relative z-20 object-contain animate-float-lapto laptop w-[44%] md:w-[24rem] lg:w-[26.5rem] mb-6 md:mb-24
+              className={`relative z-20 object-contain animate-float-laptop laptop w-[44%] md:w-[24rem] lg:w-[26.5rem] mb-6 md:mb-24
                 ${hovered ? "active" : ""}`}
             />
             {/* glowing borderline under laptop */}

@@ -1,14 +1,12 @@
 "use client"
 import React from 'react'
 import Image from "next/image";
-import bg from "../../../../public/background/project-bg.png";
+import bg from "../../../../public/background/qualifications-bg.png";
 import Carousel from '@/components/qualifications/Carousel'
-import FullScreenLoader from '@/components/FullScreenLoader';
 
 const page = () => {
   return (
     <>
-      <FullScreenLoader />
       {/* HEADLINE */}
       <div className="z-50 pt-8 text-center">
         <h1
@@ -19,7 +17,7 @@ const page = () => {
         >
           QUALIFICATION
         </h1>
-        <h2 className="glitter-text mt-1 text-[1rem] font-semibold  leading-snug md:text-[1.6rem]">
+        <h2 className="glitter-text mt-1 text-[1rem] font-semibold leading-snug md:text-[1.6rem]">
           -accomplishments-
         </h2>
       </div>
@@ -30,6 +28,7 @@ const page = () => {
         alt="background-image"
         className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-80 blur-[0.2px] bg-black"
       />
+      <div className='fixed -z-40 top-0 left-0 w-full h-full bg-black/80' />
       <Carousel />
 
     </>

@@ -1,8 +1,7 @@
 import Image from 'next/image';
-import bg from '../../../../public/background/about-bg.png';
+import bg from '../../../../public/background/contact-bg.png';
 import Form from '@/components/contact/Form';
 import Details from '@/components/contact/Details';
-import FullScreenLoader from '@/components/FullScreenLoader';
 
 export const metadata = {
   title: 'Contact',
@@ -11,7 +10,6 @@ export const metadata = {
 export default function Contact() {
   return (
     <>
-      <FullScreenLoader />
       <Image
         src={bg}
         alt="contact-bg"
@@ -19,6 +17,7 @@ export default function Contact() {
         sizes="100vw"
         className="fixed left-0 top-0 -z-50 h-full w-full object-cover object-center opacity-50"
       />
+      <div className="fixed -z-40 top-0 left-0 w-full h-full bg-black/70"/>
 
       <article className="relative flex w-full flex-col items-center justify-center space-y-6 py-2 sm:py-0">
         <div className="flex w-full flex-col items-center justify-center space-y-6 sm:w-3/4">
@@ -37,7 +36,7 @@ export default function Contact() {
             magic in response.
           </p>
         </div>
-        <div className='flex md:flex-nowrap flex-wrap justify-center md:justify-around items-start md:space-x-6'>
+        <div className='flex md:flex-nowrap flex-wrap justify-center md:justify-around items-start gap-6'>
           <Details />
           <Form />
         </div>

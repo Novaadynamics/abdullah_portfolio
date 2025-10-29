@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import bg from "../../../../../public/background/project-bg.png";
-import bg_portfolio from "../../../../../public/background/bg-portfolio.png";
-import laptop from "../../../../../public/background/laptop-screen.png";
+import bg from "../../../../../public/background/projects-bg.png";
+import laptop from "../../../../../public/background/projects-laptop.jpg";
 import { projectsData } from "@/app/data";
 import { FaReact, FaNodeJs, FaDatabase, FaLock, FaCreditCard, FaComments, FaCog } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 export default function ProjectPage({ params }) {
   const { id } = params;
@@ -27,21 +27,14 @@ export default function ProjectPage({ params }) {
         alt="background"
         priority
         fill
-        className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-70 blur-[0.4px]"
-      />
-      <Image
-        src={bg_portfolio}
-        alt="background"
-        priority
-        fill
-        className="-z-40 fixed top-0 left-0 w-full h-full object-cover object-center opacity-70 blur-[0.4px]"
+        className="-z-50 fixed top-0 left-0 w-full h-full object-cover object-center opacity-80"
       />
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center relative space-y-6 px-4 md:px-0">
+      <section className="absolute top-40 sm:top-28 md:top-14 left-1/2 -translate-x-1/2 flex flex-col items-center justify-start text-center space-y-2 px-4 md:px-0 ">
         {/* Title */}
         <motion.h1
-          initial={{ opacity: 0, y: -40 }}
+          initial={{ opacity: 0, y: 0 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className="text-transparent text-[1.8rem] sm:text-[2.2rem] md:text-[3.4rem] font-extrabold uppercase leading-tight text-glow-stroke-neon"
@@ -54,24 +47,24 @@ export default function ProjectPage({ params }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1 }}
-          className="text-[1rem] sm:text-[1.2rem] md:text-[1.4rem] text-amber-200 font-medium tracking-wide"
+          className="text-[1.1rem] sm:text-[1.3rem] md:text-[1.5rem] !font-thin text-shadow-neon-light-orange"
         >
           {project.description || "Innovative, fast, and futuristic web solutions."}
         </motion.p>
 
         {/* Laptop Showcase */}
-        <div className="relative flex items-center justify-center w-full max-w-[90vw] md:max-w-[40em] h-[13em] sm:h-[15em] md:h-[18em]">
+        <div className="relative flex items-center justify-center w-full max-w-[90vw] md:max-w-[40em] h-[13em] sm:h-[15em] md:h-[18em] mb-10">
           {/* Laptop Image */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 2 }}
-            className="relative mt-8 sm:mt-10 md:mt-12 -z-10 w-full h-full flex justify-center items-center"
+            className="relative mt-8 sm:mt-10 md:mt-12 -z-10 w-full h-full flex justify-center items-center text-shadow-neon-light-orange"
           >
             <Image
               src={laptop}
               alt="Laptop"
-              className="object-contain w-full h-full drop-shadow-[0_5px_10px_rgba(255,160,50,0.4)]"
+              className="object-contain w-full h-full )]"
               priority
             />
           </motion.div>
@@ -81,20 +74,17 @@ export default function ProjectPage({ params }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 2 }}
-            className="absolute top-[12.2%] left-[30.8%] sm:left-[31.1%] md:left-[26%] h-[70%]
-              w-[40.2%] sm:w-[39.2%] md:w-[50.2%] overflow-y-auto
+            className="absolute top-[10%] sm:top-[9%] left-[12%] sm:left-[12%] md:left-[20%] h-[61%] sm:h-[63%]
+              w-[75%] sm:w-[76%] md:w-[60%] overflow-y-auto
               bg-gradient-to-b from-black/85 to-black/60 
               backdrop-blur-md 
               flex flex-row items-stretch justify-between p-4 text-gray-200 gap-4
-               text-left"
+               text-left laptop-scroll rounded-xl"
           >
             {/* LEFT PANEL */}
             <div className="w-[100%] sm:w-[60%] flex flex-col space-y-4">
               <div>
-                <h3 className="text-amber-400 text-sm font-semibold uppercase tracking-widest mb-1 drop-shadow-[0_0_5px_#ffb627]">
-                  Tagline
-                </h3>
-                <p className="text-[0.9rem] leading-snug text-amber-100/90">
+                <p className="text-[0.9rem] leading-snug text-shadow-neon-light-orange">
                   “Empowering your ideas with next-gen digital craftsmanship.”
                 </p>
               </div>
@@ -151,26 +141,6 @@ export default function ProjectPage({ params }) {
                 </div>
               </div>
 
-              <div className="flex gap-3 pt-3">
-                <a
-                  href={project.demoLink || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center px-3 py-[4px] border border-amber-400 rounded-md text-[0.6rem] font-medium text-amber-300 
-                    shadow-[0_0_6px_#ffb627] hover:bg-amber-400/10 hover:shadow-[0_0_10px_#ffb627] transition-all duration-300"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href={project.githubLink || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center px-3 py-[4px] border border-amber-400 rounded-md text-[0.6rem] font-medium text-amber-300 
-                    shadow-[0_0_6px_#ffb627] hover:bg-amber-400/10 hover:shadow-[0_0_10px_#ffb627] transition-all duration-300"
-                >
-                  GitHub
-                </a>
-              </div>
             </div>
 
             {/* RIGHT PANEL — Image Window */}
@@ -190,14 +160,18 @@ export default function ProjectPage({ params }) {
             </motion.div>
           </motion.div>
         </div>
+
+        <button
+          className="absolute left-1/2 -translate-x-1/2 -bottom-24 px-4 py-2 custom-bg-abt text-shadow-neon-light-orange rounded-lg font-bold text-lg hover:scale-105 transition-all ease-in-out"
+          style={{ textShadow: "none" }}
+        >
+          Live Demo
+        </button>
       </section>
     </>
   );
 }
 
-
-
-import { useEffect, useState } from "react";
 
 function ImageSlider({ images }) {
   const [current, setCurrent] = useState(0);

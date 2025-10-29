@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { toast } from "sonner";
 
 const Carousel3D = () => {
     const cards = [
@@ -19,7 +20,7 @@ const Carousel3D = () => {
             id: 3,
             title: "Workshop Participation",
             category: "Educational",
-            img: "https://marketplace.canva.com/EAGTnx__MrY/1/0/1131w/canva-black-gold-modern-workshop-completion-certificate-TLZbgjF3mN0.jpg",
+            img: "https://images.template.net/385923/Landscape-Certificate-Template-edit-online.png",
         },
         {
             id: 4,
@@ -35,8 +36,9 @@ const Carousel3D = () => {
         },
     ];
 
-    const categories = ["All", "Educational", "Skills"];
+    const categories = ["All", "Educational", "Skills", "Random"];
     const [activeCategory, setActiveCategory] = useState("All");
+    const [hasAnimated, setHasAnimated] = useState(false);
 
     const categoryCounts = useMemo(() => {
         const counts = { All: cards.length };
@@ -57,7 +59,8 @@ const Carousel3D = () => {
 
     const normalizedIndex =
         filteredCards.length > 0
-            ? ((activeIndex % filteredCards.length) + filteredCards.length) % filteredCards.length
+            ? ((activeIndex % filteredCards.length) + filteredCards.length) %
+            filteredCards.length
             : 0;
 
     const nextSlide = () => {
@@ -70,29 +73,66 @@ const Carousel3D = () => {
         );
     };
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setHasAnimated(true);
+        }, 100);
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className="relative flex flex-col items-center justify-center w-full max-h-full overflow-hidden">
+            {/* Category Filters */}
             <div className="flex flex-wrap items-center justify-center gap-6 mb-10 mt-10">
-                {categories.map((cat) => {
+                {categories.map((cat, idx) => {
                     const isDisabled = cat !== "All" && categoryCounts[cat] === 0;
+                    const isActive = activeCategory === cat;
+
                     return (
-                        <span
-                            key={cat}
-                            onClick={() => !isDisabled && setActiveCategory(cat)}
-                            className={`transition text-[1rem] md:text-[1.2rem] font-semibold uppercase 
-                                ${isDisabled
-                                    ? "text-gray-500 cursor-not-allowed opacity-40"
-                                    : activeCategory === cat
-                                        ? "cursor-pointer text-glow-stroke-neon"
-                                        : "cursor-pointer text-amethyst-neon/70 hover:text-amethyst-neon"
-                                }`}
-                        >
-                            {cat}
-                        </span>
+                        <div key={idx}>
+                            <span
+                                onClick={() => {
+                                    if (isDisabled)
+                                        return toast.info("No qualifications in this category", {
+                                            style: {
+                                                color: "#ffb347",
+                                                backgroundColor: "rgb(0 0 0 / 0.7)",
+                                                border: "none",
+                                            },
+                                        });
+                                    setActiveCategory(cat);
+                                }}
+                                className={`transition text-[1rem] md:text-[1.2rem] font-semibold uppercase cursor-pointer
+                    ${isActive
+                                        ? "text-glow-stroke-neon"
+                                        : "glitter-text !tracking-normal !text-shadow-none"
+                                    }`}
+                                style={{
+                                    textShadow: isActive
+                                        ? "none"
+                                        : "0 0 2px #ff55f7, 0 0 4px #ff55f7, 0 0 6px #ff55f7",
+                                }}
+                                onMouseEnter={(e) => {
+                                    if (!isActive) {
+                                        e.currentTarget.style.textShadow =
+                                            "0 0 5px #ff55f7, 0 0 10px #ff55f7, 0 0 20px #ff55f7, 0 0 30px #ff55f7";
+                                    }
+                                }}
+                                onMouseLeave={(e) => {
+                                    if (!isActive) {
+                                        e.currentTarget.style.textShadow =
+                                            "0 0 2px #ff55f7, 0 0 4px #ff55f7, 0 0 6px #ff55f7";
+                                    }
+                                }}
+                            >
+                                {cat}
+                            </span>
+                        </div>
                     );
                 })}
             </div>
 
+            {/* Carousel 3D Container */}
             <div className="relative w-full flex items-center justify-center perspective-3d h-[74vh]">
                 {filteredCards.length > 0 ? (
                     filteredCards.map((card, index) => {
@@ -104,7 +144,6 @@ const Carousel3D = () => {
                         }
 
                         const absOffset = Math.abs(offset);
-
                         const translateX = offset * 200;
                         const translateZ = -absOffset * 80;
                         const rotateY = offset * -25;
@@ -113,43 +152,41 @@ const Carousel3D = () => {
                         return (
                             <div
                                 key={card.id}
-                                className="absolute w-auto h-full py-6 text-white rounded-2xl flex flex-col items-center justify-between text-xl font-bold transition-all duration-700 ease-in-out"
+                                className="absolute w-auto h-full py-6 text-white rounded-2xl flex flex-col items-center justify-between text-xl font-bold gap-6"
                                 style={{
-                                    transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
+                                    transform: hasAnimated
+                                        ? `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`
+                                        : "translateX(0px) translateZ(-400px) rotateY(0deg) scale(0.5)",
                                     zIndex: 100 - absOffset,
-                                    opacity: 1 - absOffset * 0.25,
+                                    opacity: hasAnimated ? 1 - absOffset * 0.25 : 0,
                                     filter: `brightness(${1 - absOffset * 0.25})`,
+                                    transition: `all 700ms ease-in-out ${absOffset * 200}ms`,
                                 }}
                             >
-                                {/* Cert Image */}
-                                <div className="relative w-full h-full p-[0.3rem] flex items-center justify-center rounded-lg 
-                                                    border border-[#ffb627] bg-yellow-400/5 backdrop-blur-md
-                                                    shadow-[inset_0_4px_15px_rgba(255,182,39,0.35)]
-                                                    before:content-[''] before:absolute before:inset-0 before:rounded-lg before:border before:border-[#ffc27b]
-                                                    before:shadow-[0_0_0px_orangered,0_0_3px_orangered,0_0_10px_#ffb627]
-                                                    before:pointer-events-none transition-shadow duration-500"
-                                >
-                                    <img
-                                        src={card.img}
-                                        alt={card.title}
-                                        className="w-full h-full object-cover rounded-lg"
-                                        style={{
-                                            filter:
-                                                "sepia(70%) saturate(310%) hue-rotate(3deg) brightness(78%)",
-                                        }}
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/10 via-transparent to-yellow-500/5 rounded-lg mix-blend-overlay pointer-events-none"></div>
-                                </div>
+                                {/* === IMAGE + REFLECTION SECTION === */}
+                                <div className="relative w-full h-full flex flex-col items-center justify-start rounded-lg overflow-visible">
+                                    {/* Main Image */}
+                                    <div className="relative w-full h-[80%] p-[0.3rem] flex items-center justify-center rounded-lg custom-bg-abt">
+                                        <img
+                                            src={card.img}
+                                            alt={card.title}
+                                            className="w-full h-full object-cover rounded-lg"
+                                            style={{
+                                                filter:
+                                                    "sepia(70%) saturate(310%) hue-rotate(3deg) brightness(78%)",
+                                            }}
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/10 via-transparent to-yellow-500/5 rounded-lg mix-blend-overlay pointer-events-none"></div>
+                                    </div>
 
-                                {/* Cert Name */}
-                                <div className="relative w-full text-center rounded-lg border border-[#ffb627] bg-transparent backdrop-blur-md 
-                                                    before:absolute before:inset-0 before:rounded-lg before:border before:border-[#ffc27b]
-                                                    before:shadow-[0_0_5px_#ffb627,0_0_3px_orangered,0_0_5px_#ffb627]
-                                                    before:pointer-events-none shadow-[inset_0_4px_15px_rgba(255,182,39,0.25)] p-3"
-                                >
-                                    <h3 className="text-center text-lg font-semibold text-[#FFB627] tracking-wide relative z-10 drop-shadow-[0_0_5px_#ffb627]">
-                                        {card.title}
-                                    </h3>
+
+                                    {/* Certificate Title + Reflection */}
+                                    <div className="relative w-full text-center rounded-lg border custom-bg-abt before:absolute before:inset-0 before:rounded-lg before:pointer-events-none p-3 mt-3">
+                                        <h3 className="text-center text-lg font-semibold text-shadow-neon-light-orange tracking-wide relative z-10">
+                                            {card.title}
+                                        </h3>
+
+                                    </div>
                                 </div>
                             </div>
                         );
@@ -161,21 +198,26 @@ const Carousel3D = () => {
                 )}
             </div>
 
-            {/* Next / Previous Certs */}
+            {/* Next / Prev Buttons + Reflection */}
             {filteredCards.length > 0 && (
-                <div className="flex gap-6 mt-16">
-                    <button
-                        onClick={prevSlide}
-                        className="px-4 py-2 border border-[#ffb627] bg-yellow-400/10 backdrop-blur-md text-white rounded-lg hover:shadow-[inset_0_4px_12px_rgba(251,191,36,0.25)]"
-                    >
-                        Prev
-                    </button>
-                    <button
-                        onClick={nextSlide}
-                        className="px-4 py-2 border border-[#ffb627] bg-yellow-400/10 backdrop-blur-md text-white rounded-lg hover:shadow-[inset_0_4px_12px_rgba(251,191,36,0.25)]"
-                    >
-                        Next
-                    </button>
+                <div className="relative flex flex-col items-center mt-10 mb-4">
+                    <div className="flex gap-6 z-10">
+                        <button
+                            onClick={prevSlide}
+                            className="px-4 py-2 custom-bg-abt text-shadow-neon-light-orange rounded-lg"
+                            style={{ textShadow: "none" }}
+                        >
+                            Prev
+                        </button>
+                        <button
+                            onClick={nextSlide}
+                            className="px-4 py-2 custom-bg-abt text-shadow-neon-light-orange rounded-lg"
+                            style={{ textShadow: "none" }}
+                        >
+                            Next
+                        </button>
+                    </div>
+
                 </div>
             )}
         </div>

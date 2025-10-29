@@ -2,12 +2,10 @@
 import Image from "next/image";
 import bg from "../../../../public/background/about-bg.png";
 import AboutDetails from "@/components/about";
-import FullScreenLoader from "@/components/FullScreenLoader";
 
 export default function About() {
   return (
-    <main > 
-       <FullScreenLoader />
+    <main >
       <Image
         priority
         sizes="100vw"
@@ -25,19 +23,18 @@ export default function About() {
         </div>
       </div> */}
       {/* HEADLINE */}
-        <div id="about" className="z-50 pt-8 text-center">
-          <h1
-            className="text-transparent text-[3rem] font-extrabold uppercase leading-tight md:text-[3.5rem] text-glow-stroke-neon"
-            style={{
-              // textShadow: "0 0 10px #fcf699, 0 0 20px #fcf699, 0 0 40px #fcf699"
-            }}
-          >
-            ABOUT ME  
-          </h1>
-          <h2 className="glitter-text mt-1 text-[1rem] font-semibold uppercase leading-snug md:text-[1.6rem]">
-            - WHO I AM -
-          </h2>
+      <div id="about" className="z-50 pt-8 text-center">
+        <h1
+          className="text-transparent text-[3rem] font-extrabold uppercase leading-tight md:text-[3.5rem] text-glow-stroke-neon"
+        >
+          ABOUT ME
+        </h1>
+        <div className="flex items-center justify-center gap-4 glitter-text mt-1 text-[1rem] font-semibold uppercase leading-snug md:text-[1.6rem]">
+          <div className="w-6 h-[2px] drop-shadow-[0_0_6px_#ffb03a] glitter-bg" />
+          <span>WHO I AM</span>
+          <div className="w-6 h-[2px] drop-shadow-[0_0_6px_#ffb03a] glitter-bg" />
         </div>
+      </div>
 
       <AboutDetails />
     </main>

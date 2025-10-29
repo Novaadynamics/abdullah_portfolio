@@ -19,12 +19,12 @@ const HomeBtn = () => {
       name={"home"}
       prefetch={false}
     >
-      <span className="relative  w-14 h-14 p-4  hover:text-accent">
-        <Home className="w-full h-auto" strokeWidth={1.5} />
+      <span className="relative  w-14 h-14 p-4 hover:text-accent group">
+        <Home className="w-full h-auto text-[#f7ba48] group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
 
         <span className="peer bg-transparent absolute top-0 left-0 w-full h-full" />
 
-        <span className="absolute  hidden text-[#ecbe5cda] peer-hover:block px-2 py-1 left-full mx-2 top-1/2  -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap">
+        <span className="absolute  hidden peer-hover:block px-2 py-1 left-full mx-2 top-1/2  -translate-y-1/2 bg-background text-foreground text-sm rounded-md shadow-lg whitespace-nowrap">
           Home
         </span>
       </span>

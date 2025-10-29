@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import FireFliesBackground from "@/components/FireFliesBackground";
+import { Toaster } from "sonner";
+import LoaderWrapper from "@/components/loaderWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,8 +22,11 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/png" href="/background/logo.png" />
       </head>
       <body className={clsx(inter.variable, "bg-background text-foreground")}>
-        {children}
+        <LoaderWrapper>
+          {children}
+        </LoaderWrapper>
         <FireFliesBackground />
+        <Toaster position="top-right" />
       </body>
     </html>
   );
