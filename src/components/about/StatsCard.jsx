@@ -42,7 +42,7 @@ export default function GitHubStatsCard({ data, userName = "GitHub User", isUpda
             </AnimatePresence>
 
             <h2 className="text-xl md:text-2xl text-left w-full capitalize text-shadow-neon-orange mb-6">
-                {userName}'s GitHub Stats
+                {userName}&apos;s GitHub Stats
             </h2>
 
             <div className="flex gap-8 items-center flex-col sm:flex-row md:items-start flex-wrap justify-center">
