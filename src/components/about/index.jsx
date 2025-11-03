@@ -142,11 +142,11 @@ const AboutDetails = () => {
   useEffect(() => {
     getGithubStats();
 
-    // const interval = setInterval(() => {
-    //   getGithubStats();
-    // }, 8000);
+    const interval = setInterval(() => {
+      getGithubStats();
+    }, 8000);
 
-    // return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {

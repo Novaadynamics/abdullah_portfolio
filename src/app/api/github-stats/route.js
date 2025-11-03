@@ -21,7 +21,7 @@ export async function GET(request) {
     const languages = await getAllLanguages(username);
     const stats = await fetchGitHubStats(username, repoName);
     const iconsLanguages = await getUserLanguages(username);
-    return NextResponse.json({ languages: languages.slice(0, 5), stats, icons: iconsLanguages });
+    return NextResponse.json({ languages: languages.slice(0, 6), stats, icons: iconsLanguages });
   } catch (error) {
     console.error("GitHub API Error:", error);
     return NextResponse.json(
@@ -299,6 +299,7 @@ function computeStreaks(contributionCalendar) {
     if (lastDay === today)
       currentStreak = { days: streak, start: streakStart, end: lastDay };
   }
+  console.log("Streaks", { currentStreak, longestStreak })
 
   return { currentStreak, longestStreak };
 }

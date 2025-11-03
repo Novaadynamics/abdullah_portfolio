@@ -36,8 +36,8 @@ export default function Contact() {
             magic in response.
           </p>
         </div>
-        <div className='flex md:flex-nowrap flex-wrap justify-center md:justify-around items-start gap-6'>
-          <Details />
+        <div className='flex justify-center gap-6 w-full'>
+          {/* <Details /> */}
           <Form />
         </div>
       </article>

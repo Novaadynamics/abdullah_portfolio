@@ -66,11 +66,11 @@ export default function Form() {
         initial="hidden"
         animate="show"
         onSubmit={handleSubmit(onSubmit)}
-        className="flex w-full h-full py-6 custom-bg-2 px-12 rounded-lg max-w-md flex-col items-center justify-center space-y-4"
+        className="flex w-full h-full py-6 px-12 max-w-xl flex-col items-center justify-center space-y-4"
       >
-        <motion.div variants={item} className="w-full">
+        {/* <motion.div variants={item} className="w-full">
           <h2 className="text-[2em] text-amethyst-neon">Message Me</h2>
-        </motion.div>
+        </motion.div> */}
 
         <motion.input
           variants={item}
@@ -83,7 +83,7 @@ export default function Form() {
               message: 'Name should be atleast 3 characters long.',
             },
           })}
-          className="custom-bg-2 w-fullx rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
+          className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
         />
         {errors.name && (
           <span className="inline-block self-start text-accent">

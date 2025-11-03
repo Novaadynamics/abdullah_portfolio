@@ -41,13 +41,13 @@ export default function GitHubStatsCard({ data, userName = "GitHub User", isUpda
                 )}
             </AnimatePresence>
 
-            <h2 className="text-xl md:text-2xl text-left w-full capitalize text-shadow-neon-orange mb-6">
+            <h2 className="text-xl md:text-2xl text-left w-full capitalize text-shadow-neon-orange mb-4">
                 {userName}&apos;s GitHub Stats
             </h2>
 
             <div className="flex gap-8 items-center flex-col sm:flex-row md:items-start flex-wrap justify-center">
                 {/* Stats List */}
-                <div className="flex-1 space-y-4 w-full">
+                <div className="flex-1 space-y-2 w-full">
                     {stats.map((stat, idx) => (
                         <AnimatedStat
                             key={idx}
