@@ -2,6 +2,8 @@ import { motion } from "framer-motion"
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaCog, FaComments, FaCreditCard, FaDatabase, FaLock, FaNodeJs, FaReact } from "react-icons/fa"
+import TypeOnChunks from "./typeon-chunks";
+import { GlowButton } from "./glow-button";
 
 export default function LaptopContent() {
     return (
@@ -19,8 +21,8 @@ export default function LaptopContent() {
                 {/* LEFT PANEL */}
                 <div className="w-[100%] sm:w-[60%] flex flex-col space-y-4">
                     <div>
-                        <p className="text-[0.9rem] leading-snug text-shadow-neon-light-orange">
-                            “Empowering your ideas with next-gen digital craftsmanship.”
+                        <p className="text-[2rem] leading-snug text-shadow-neon-light-orange">
+                            <TypeOnChunks text="Empowering your ideas with next-gen digital craftsmanship." />
                         </p>
                     </div>
 
@@ -28,7 +30,7 @@ export default function LaptopContent() {
                         {["Next.js", "TailwindCSS", "Framer Motion", "Fullstack"].map((badge, i) => (
                             <span
                                 key={i}
-                                className="text-[0.6rem] border border-amber-500/50 px-2 py-[1px] rounded-full bg-black/30 text-amber-300"
+                                className="text-[1.4rem] border border-amber-500/50 px-2 py-[1px] rounded-full bg-black/30 text-amber-300"
                             >
                                 {badge}
                             </span>
@@ -36,28 +38,28 @@ export default function LaptopContent() {
                     </div>
 
                     <div>
-                        <h3 className="text-amber-400 text-xs font-semibold uppercase mb-1">
+                        <h3 className="text-amber-400 text-base font-semibold uppercase mb-1">
                             Tools & Frameworks
                         </h3>
-                        <div className="flex gap-2 text-sm text-amber-200/80">
-                            <FaReact /> <FaNodeJs /> <FaDatabase /> <FaCog />
+                        <div className="flex gap-2 text-base text-amber-200/80">
+                            <FaReact size={24} /> <FaNodeJs size={24} /> <FaDatabase size={24} /> <FaCog size={24} />
                         </div>
                     </div>
 
                     <div>
-                        <h3 className="text-amber-400 text-xs font-semibold uppercase mb-1">
+                        <h3 className="text-amber-400 text-base font-semibold uppercase mb-1">
                             Project Overview
                         </h3>
-                        <p className="text-[0.85rem] text-amber-100/80 mb-2">
+                        <p className="text-[1.6rem] text-amber-100/80 mb-2">
                             This platform streamlines e-commerce workflows through a unified dashboard and live analytics.
                         </p>
-                        <p className="text-[0.8rem] text-amber-100/60">
+                        <p className="text-[1.6rem] text-amber-100/60">
                             It solves the complexity of managing multiple tools by offering a centralized, intuitive interface.
                         </p>
                     </div>
 
                     <div>
-                        <h3 className="text-amber-400 text-xs font-semibold uppercase mb-2">Features</h3>
+                        <h3 className="text-amber-400 text-base font-semibold uppercase mb-2">Features</h3>
                         <div className="grid grid-cols-2 gap-2">
                             {[
                                 { icon: <FaLock />, title: "Authentication", desc: "Secure login and user access." },
@@ -65,7 +67,7 @@ export default function LaptopContent() {
                                 { icon: <FaComments />, title: "Live Chat", desc: "Instant user communication." },
                                 { icon: <FaCog />, title: "Admin Panel", desc: "Simplified content control." },
                             ].map((f, i) => (
-                                <div key={i} className="flex items-start gap-2 text-[0.68rem]">
+                                <div key={i} className="flex items-start gap-2 text-[1.36rem]">
                                     {/* <div className="text-amber-400 mt-[2px]">{f.icon}</div> */}
                                     <div>
                                         <p className="font-medium text-amber-200">{f.title}</p>
@@ -75,6 +77,12 @@ export default function LaptopContent() {
                             ))}
                         </div>
                     </div>
+
+                    <div className="w-full flex items-center justify-between gap-4 my-2 px-14">
+                        <GlowButton href="#">Live Demo</GlowButton>
+                        <GlowButton href="#">GitHub</GlowButton>
+                    </div>
+
 
                 </div>
 

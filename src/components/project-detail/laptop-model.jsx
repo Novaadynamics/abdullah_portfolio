@@ -254,7 +254,7 @@ export default function LaptopModel({ position }) {
                         distanceFactor={1}
                         occlude={false}
                         zIndexRange={[100, 0]}
-                        className="w-[880px] h-[480px] overflow-hidden rounded-md pointer-events-none select-none"
+                        className="w-[880px] h-[480px] overflow-hidden rounded-md"
                         style={{
                             transform: 'translateZ(0.001px)', // fixes z-fighting
                         }}

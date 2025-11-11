@@ -11,6 +11,9 @@ import { projectsData } from "@/app/data"
 import RealisticTree from "@/components/project-detail/tree-stump"
 import LaptopModel from "@/components/project-detail/laptop-model"
 import bg from "../../../../../public/background/home-bg.png"
+import GlowingTitle from "@/components/project-detail/glowing-project-name"
+import AuroraParallaxBackground from "@/components/project-detail/aurora-bg"
+import LanternSweep from "@/components/project-detail/lantern-sweep"
 
 // Orange Glowing Rounded Particles
 function OrangeParticles() {
@@ -138,16 +141,24 @@ export default function ThreeDScene({ params }) {
                 className="fixed top-0 left-0 w-full h-full object-cover object-center -z-10"
                 quality={100}
             />
-            <div className="relative w-full h-screen overflow-hidden" style={{
-                overflow: 'hidden',
-                height: '100vh',
-                width: '100vw',
-                position: 'fixed',
-                top: 0,
-                left: 0,
-            }}>
+            <div
+                className="relative w-full h-screen overflow-hidden"
+                style={{
+                    height: "100vh",
+                    width: "100vw",
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                }}
+            >
 
-                {/* 3D Canvas - Full Width & Height */}
+                {/* Aurora + Lantern placed BETWEEN background and canvas */}
+                <div className="absolute inset-0 z-[ -5 ] pointer-events-none">
+                    <AuroraParallaxBackground />
+                    <LanternSweep />
+                </div>
+
+                {/* 3D Canvas */}
                 <Canvas
                     shadows
                     gl={{
@@ -155,39 +166,25 @@ export default function ThreeDScene({ params }) {
                         toneMapping: THREE.ACESFilmicToneMapping,
                         toneMappingExposure: 1.2,
                     }}
-                    className="absolute inset-0 w-full h-full overflow-hidden"
+                    className="absolute inset-0 w-full h-full overflow-hidden z-[0]"
                 >
                     <Scene />
                 </Canvas>
 
-                {/* Overlay UI - Same as your old design */}
+                {/* Overlay UI */}
                 <section className="absolute top-14 sm:top-20 md:top-10 left-1/2 -translate-x-1/2 flex flex-col items-center justify-start text-center space-y-2 px-4 md:px-0 z-20">
-                    {/* Title */}
-                    <motion.h1
-                        initial={{ opacity: 0, y: 0 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1 }}
-                        className="text-transparent text-[1.8rem] sm:text-[2.2rem] md:text-[3.4rem] font-extrabold uppercase leading-tight text-glow-stroke-neon"
-                    >
-                        {project.name || "Project Name"}
-                    </motion.h1>
-
-                    {/* Tagline */}
+                    <GlowingTitle text={project.name || 'Project Name'} />
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 1 }}
                         className="text-[1.1rem] sm:text-[1.3rem] md:text-[1.5rem] !font-thin text-shadow-neon-light-orange"
                     >
-                        {project.description || "Innovative, fast, and futuristic web solutions."}
+                        {project.description || 'Innovative, fast, and futuristic web solutions.'}
                     </motion.p>
-
-                    {/* Live Demo Button */}
-                    <button className="whitespace-nowrap px-8 py-4 custom-bg-abt text-shadow-neon-light-orange rounded-lg font-bold text-lg hover:scale-105 transition-all ease-in-out shadow-2xl">
-                        Live Demo
-                    </button>
                 </section>
             </div>
+
         </>
     )
 }
