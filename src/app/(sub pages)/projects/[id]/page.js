@@ -78,12 +78,12 @@ function Scene() {
             <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 4, 7]} fov={30} />
 
             {/* Soft warm lighting */}
-            <directionalLight position={[5, 10, 5]} intensity={2} castShadow />
-            <ambientLight intensity={0.4} />
-            <pointLight position={[0, 6, 0]} intensity={2} color="#ff8c42" />
+            <directionalLight position={[5, 10, 5]} intensity={4} castShadow color="#f9d174" />
+            <ambientLight intensity={4} color="#f9d174" />
+            <pointLight position={[0, 6, 0]} intensity={4} color="#f9d174" />
 
             {/* Fog for depth */}
-            <fog attach="fog" args={["#1a0d00", 8, 25]} />
+            {/* <fog attach="fog" args={["#1a0d00", 8, 25]} /> */}
 
             <Environment preset="night" />
 

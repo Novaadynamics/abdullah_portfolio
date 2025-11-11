@@ -10,21 +10,24 @@ import { motion } from "framer-motion"
 export default function LaptopModel({ position }) {
     const groupRef = useRef(null)
 
+    // ----------------------------
+    // Keyboard Texture Generation
+    // ----------------------------
     const keyboardTexture = useMemo(() => {
         const canvas = document.createElement("canvas")
         canvas.width = 2100
         canvas.height = 1400
         const ctx = canvas.getContext("2d")
 
-        // Dark aluminum base (MacBook Pro style)
+        // --- Laptop base gradient (darker than before) ---
         const baseGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
-        baseGradient.addColorStop(0, "#1e1e1e")
-        baseGradient.addColorStop(0.5, "#2a2a2a")
-        baseGradient.addColorStop(1, "#1a1a1a")
+        baseGradient.addColorStop(0, "#0f0f0f") // darker top
+        baseGradient.addColorStop(0.5, "#1a1a1a")
+        baseGradient.addColorStop(1, "#0a0a0a") // darker bottom
         ctx.fillStyle = baseGradient
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-        // Key configuration
+        // --- Keyboard key layout ---
         const keyRows = [
             ["Esc", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "Del"],
             ["~`", "1!", "2@", "3#", "4$", "5%", "6^", "7&", "8*", "9(", "0)", "-_", "+=", "Backspace"],
@@ -34,16 +37,15 @@ export default function LaptopModel({ position }) {
             ["Fn", "Ctrl", "Opt", "Cmd", "Space", "Cmd", "Opt", "Ctrl"]
         ]
 
-        // Layout settings - aligned to edges
         const startX = 85
-        const endX = 2015 // Right edge
+        const endX = 2015
         const startY = 75
         const keyBaseSize = 108
         const keyGap = 9
         const rowHeight = keyBaseSize + keyGap
         const cornerRadius = 14
 
-        // Draw rounded rectangle helper
+        // Helper to draw rounded rectangle
         const roundRect = (x, y, w, h, r) => {
             ctx.beginPath()
             ctx.moveTo(x + r, y)
@@ -59,10 +61,9 @@ export default function LaptopModel({ position }) {
         }
 
         keyRows.forEach((row, rowIndex) => {
-            // Calculate total available width for this row
             const availableWidth = endX - startX
 
-            // Calculate key sizes based on special keys
+            // Adjust width for special keys
             const keyWidths = row.map(key => {
                 const text = key.includes('!') || key.includes('@') ? key.split('')[0] : key
                 if (["Backspace", "Enter"].includes(text)) return 2.1
@@ -74,11 +75,9 @@ export default function LaptopModel({ position }) {
                 return 1
             })
 
-            // Calculate total units and gap space
             const totalUnits = keyWidths.reduce((a, b) => a + b, 0)
             const totalGaps = (row.length - 1) * keyGap
             const unitWidth = (availableWidth - totalGaps) / totalUnits
-
             let xOffset = startX
 
             row.forEach((keyLabel, keyIndex) => {
@@ -90,35 +89,35 @@ export default function LaptopModel({ position }) {
                 const x = xOffset
                 const y = startY + rowIndex * rowHeight
 
-                // Key shadow (scissor mechanism depth)
-                ctx.fillStyle = "rgba(0, 0, 0, 0.5)"
+                // Key shadow (depth)
+                ctx.fillStyle = "rgba(0,0,0,0.5)"
                 roundRect(x + 3, y + 3, width, keyBaseSize, cornerRadius)
                 ctx.fill()
 
-                // Keycap gradient (realistic plastic)
+                // Key gradient (plastic)
                 const keyGrad = ctx.createLinearGradient(x, y, x, y + keyBaseSize)
-                keyGrad.addColorStop(0, "#404040")
-                keyGrad.addColorStop(0.05, "#484848")
-                keyGrad.addColorStop(0.5, "#383838")
-                keyGrad.addColorStop(0.95, "#2f2f2f")
-                keyGrad.addColorStop(1, "#282828")
+                keyGrad.addColorStop(0, "#303030")
+                keyGrad.addColorStop(0.05, "#383838")
+                keyGrad.addColorStop(0.5, "#262626")
+                keyGrad.addColorStop(0.95, "#1f1f1f")
+                keyGrad.addColorStop(1, "#191919")
                 ctx.fillStyle = keyGrad
                 roundRect(x, y, width, keyBaseSize, cornerRadius)
                 ctx.fill()
 
-                // Top highlight (glossy keycap)
-                ctx.fillStyle = "rgba(255, 255, 255, 0.06)"
+                // Top highlight
+                ctx.fillStyle = "rgba(255,255,255,0.06)"
                 roundRect(x + 2, y + 2, width - 4, 32, cornerRadius - 2)
                 ctx.fill()
 
                 // Inner bevel
-                ctx.strokeStyle = "rgba(80, 80, 80, 0.4)"
+                ctx.strokeStyle = "rgba(80,80,80,0.4)"
                 ctx.lineWidth = 1
                 roundRect(x + 1, y + 1, width - 2, keyBaseSize - 2, cornerRadius - 1)
                 ctx.stroke()
 
-                // Text rendering
-                ctx.shadowColor = "rgba(0, 0, 0, 0.7)"
+                // Text
+                ctx.shadowColor = "rgba(0,0,0,0.7)"
                 ctx.shadowBlur = 2
                 ctx.shadowOffsetX = 0
                 ctx.shadowOffsetY = 1
@@ -129,11 +128,8 @@ export default function LaptopModel({ position }) {
                 ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
                 ctx.textAlign = "center"
                 ctx.textBaseline = "middle"
-
-                // Main text
                 ctx.fillText(mainText, x + width / 2, y + keyBaseSize / 2 + 2)
 
-                // Sub text (for symbols like ! @ #)
                 if (subText) {
                     ctx.font = `${subFontSize}px -apple-system, BlinkMacSystemFont`
                     ctx.fillStyle = "#aaaaaa"
@@ -141,24 +137,23 @@ export default function LaptopModel({ position }) {
                 }
 
                 ctx.shadowBlur = 0
-
                 xOffset += width + keyGap
             })
         })
 
-        // Trackpad — ultra realistic glass
+        // ----------------------------
+        // Trackpad
+        // ----------------------------
         const tpX = 1050 - 320
         const tpY = 850
         const tpW = 640
         const tpH = 500
 
-        // Trackpad glass border
         ctx.strokeStyle = "#333333"
         ctx.lineWidth = 3
         roundRect(tpX - 1, tpY - 1, tpW + 2, tpH + 2, 28)
         ctx.stroke()
 
-        // Trackpad surface
         const tpGrad = ctx.createRadialGradient(tpX + tpW / 2, tpY + tpH / 2, 0, tpX + tpW / 2, tpY + tpH / 2, tpW)
         tpGrad.addColorStop(0, "#2a2a2a")
         tpGrad.addColorStop(0.7, "#222222")
@@ -167,8 +162,7 @@ export default function LaptopModel({ position }) {
         roundRect(tpX, tpY, tpW, tpH, 26)
         ctx.fill()
 
-        // Subtle reflection
-        ctx.fillStyle = "rgba(255, 255, 255, 0.04)"
+        ctx.fillStyle = "rgba(255,255,255,0.04)"
         roundRect(tpX + 20, tpY + 20, tpW - 40, 80, 20)
         ctx.fill()
 
@@ -179,6 +173,9 @@ export default function LaptopModel({ position }) {
         return texture
     }, [])
 
+    // ----------------------------
+    // Floating Animation
+    // ----------------------------
     useFrame((state) => {
         if (groupRef.current) {
             groupRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.5) * 0.06
@@ -205,77 +202,54 @@ export default function LaptopModel({ position }) {
 
     return (
         <group ref={groupRef} position={position} rotation={[0, Math.PI, 0]}>
-            {/* Base & Body */}
+            {/* ----------------------------
+                Laptop Base & Body
+            ---------------------------- */}
             <mesh position={[0, -0.015, 0]} castShadow receiveShadow>
                 <boxGeometry args={[2.3, 0.025, 1.5]} />
-                <meshStandardMaterial color="#1a1a1a" metalness={0.85} roughness={0.12} envMapIntensity={1.5} />
+                <meshStandardMaterial color="#0a0a0a" metalness={0.85} roughness={0.12} envMapIntensity={1.5} />
             </mesh>
 
+            {/* Inner body layer */}
             <mesh position={[0, 0.02, -0.09]} castShadow receiveShadow>
                 <boxGeometry args={[2.3, 0.04, 1.4]} />
-                <meshStandardMaterial color="#0d0d0d" metalness={0.8} roughness={0.15} envMapIntensity={1.2} />
+                <meshStandardMaterial color="#0a0a0a" metalness={0.8} roughness={0.15} envMapIntensity={1.2} />
             </mesh>
 
-            {/* Keyboard */}
+            {/* ----------------------------
+                Keyboard
+            ---------------------------- */}
             <mesh position={[0, 0.048, -0.02]} rotation={[1.58, 0, 0]} castShadow receiveShadow>
                 <planeGeometry args={[2.3, 1.45]} />
                 <meshStandardMaterial map={keyboardTexture} metalness={0.5} roughness={0.1} side={THREE.BackSide} />
             </mesh>
 
-            {/* Screen Group */}
+            {/* ----------------------------
+                Screen Group
+            ---------------------------- */}
             <group position={[0, 0, 0.73]} rotation={[0.2, 0, 0]}>
                 {/* Back Cover */}
                 <mesh position={[0, 0.68, 0.018]} castShadow>
                     <boxGeometry args={[2.3, 1.32, 0.028]} />
-                    <meshStandardMaterial color="#1a1a1a" metalness={0.85} roughness={0.1} envMapIntensity={1.5} />
+                    <meshStandardMaterial color="#0a0a0a" metalness={0.85} roughness={0.1} envMapIntensity={1.5} />
                 </mesh>
 
                 {/* Bezel */}
                 <mesh position={[0, 0.68, -0.002]} castShadow>
                     <boxGeometry args={[2.18, 1.33, 0.012]} />
-                    <meshStandardMaterial color="#0a0a0a" metalness={0.7} roughness={0.2} />
+                    <meshStandardMaterial color="#000" metalness={0.7} roughness={0.2} />
                 </mesh>
 
-                {/* SCREEN — FULL WIDTH HTML CONTENT */}
+                {/* Screen with HTML content */}
                 <motion.mesh position={[LCX, 0.68, 0]} rotation={[0, Math.PI, 0]}>
                     <planeGeometry args={[2.1, 1.22]} />
-
-                    <meshStandardMaterial
-                        color="#ffffff"
-                        emissive="#ffffff"
-                        emissiveIntensity={1.4}
-                        metalness={0.05}
-                        roughness={0.08}
-                        side={THREE.BackSide}
-                    />
-
-                    <Html
-                        transform
-                        distanceFactor={1}
-                        occlude={false}
-                        zIndexRange={[100, 0]}
-                        className="w-[880px] h-[480px] overflow-hidden rounded-md"
-                        style={{
-                            transform: 'translateZ(0.001px)', // fixes z-fighting
-                        }}
-                    >
-                        {/* FULL WIDTH + FULL HEIGHT WRAPPER */}
-                        {/* <div
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                borderRadius: '6px',
-                                overflow: 'hidden',
-                                display: 'flex',
-                                flexDirection: 'column',
-                            }}
-                        > */}
+                    <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={1.4} metalness={0.05} roughness={0.08} side={THREE.BackSide} />
+                    <Html transform distanceFactor={1} occlude={false} zIndexRange={[100, 0]} className="w-[880px] h-[480px] overflow-hidden rounded-md">
                         <LaptopContent />
-                        {/* </div> */}
                     </Html>
                 </motion.mesh>
 
-                {/* Webcam */}
+                {/* Webcam and status lights */}
                 <mesh position={[0, 1.33, -0.005]} castShadow>
                     <cylinderGeometry args={[0.018, 0.018, 0.01, 20]} />
                     <meshStandardMaterial color="#0a0a0a" metalness={0.6} roughness={0.2} />
@@ -290,22 +264,22 @@ export default function LaptopModel({ position }) {
                 </mesh>
             </group>
 
-            {/* Rubber feet, vents, ports — unchanged */}
-            {[
-                [-0.95, -0.025, -0.65],
-                [0.95, -0.025, -0.65],
-                [-0.95, -0.025, 0.65],
-                [0.95, -0.025, 0.65]
-            ].map((pos, i) => (
+            {/* ----------------------------
+                Rubber feet
+            ---------------------------- */}
+            {[[-0.95, -0.025, -0.65], [0.95, -0.025, -0.65], [-0.95, -0.025, 0.65], [0.95, -0.025, 0.65]].map((pos, i) => (
                 <mesh key={i} position={pos}>
                     <cylinderGeometry args={[0.035, 0.035, 0.012, 12]} />
                     <meshStandardMaterial color="#0a0a0a" metalness={0.05} roughness={0.95} />
                 </mesh>
             ))}
 
+            {/* ----------------------------
+                Vents
+            ---------------------------- */}
             {[-1.1, 1.1].map((x, i) => (
                 <group key={`vent-${i}`}>
-                    {[0, 1, 2, 3, 4, 5].map((j) => (
+                    {[0, 1, 2, 3, 4, 5].map(j => (
                         <mesh key={j} position={[x, 0.025, -0.4 + j * 0.15]} rotation={[0, Math.PI / 2, 0]}>
                             <planeGeometry args={[0.08, 0.015]} />
                             <meshStandardMaterial color="#0a0a0a" metalness={0.4} roughness={0.6} />
@@ -314,7 +288,10 @@ export default function LaptopModel({ position }) {
                 </group>
             ))}
 
-            {[0, 1].map((i) => (
+            {/* ----------------------------
+                Ports
+            ---------------------------- */}
+            {[0, 1].map(i => (
                 <mesh key={`port-${i}`} position={[-1.13, 0.025, -0.2 + i * 0.15]} rotation={[0, Math.PI / 2, 0]}>
                     <planeGeometry args={[0.06, 0.025]} />
                     <meshStandardMaterial color="#0a0a0a" metalness={0.5} roughness={0.3} />
