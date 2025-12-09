@@ -37,7 +37,7 @@ module.exports = {
           neon: "#fc83ff", // neon purple (subtitle)
         },
         neon: {
-          700: "#ffb03a", // neon yellow
+          700: "#ff6d05", // neon yellow
         },
 
       },
@@ -76,11 +76,11 @@ module.exports = {
         "ripple-neon": {
           "0%": {
             transform: "perspective(600px) rotateX(80deg) scale(0)",
-            boxShadow: " 0 0 140px #b16612",
+            boxShadow: " 0 0 140px #ff6d05",
             // borderColor: "#eab53e",
           },
           "20%": {
-            boxShadow: " 0 0 140px #b16612",
+            boxShadow: " 0 0 140px #ff6d05",
           },
           "70%": {
             opacity: ".8",

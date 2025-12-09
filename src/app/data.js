@@ -113,18 +113,24 @@ export const BtnList = [
     label: 'Github',
     link: 'https://www.github.com/MA1002643',
     icon: 'github',
-    newTab: true,
+    newTab: false,
+  },
+  {
+    label: 'My Past',
+    link: 'https://muhammadabdullah227.co.uk/',
+    icon: 'past',
+    newTab: false,
   },
   {
     label: 'LinkedIn',
     link: 'https://www.linkedin.com/in/muhammad-abdullah227/',
     icon: 'linkedin',
-    newTab: true,
+    newTab: false,
   },
   {
     label: 'Resume',
     link: '/Muhammad Abdullah CV.pdf',
     icon: 'resume',
-    newTab: true,
+    newTab: false,
   },
 ];

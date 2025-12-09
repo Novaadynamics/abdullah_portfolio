@@ -39,7 +39,7 @@ export default function Home() {
           {/* <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 text-[3rem] font-light uppercase leading-snug md:text-[3rem] lg:text-[3.3rem]">
             Software Developer
           </h2> */}
-          <h2 className="glitter-text mt-1 text-[1.5rem] md:text-[2rem] lg:text-[2.5rem] font-light uppercase leading-snug">
+          <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 !text-[1rem] font-light uppercase leading-snug md:!text-[1.2rem] lg:!text-[1.5rem]">
             Software Engineer
           </h2>
 
@@ -53,7 +53,7 @@ export default function Home() {
               src={laptop}
               alt="laptop"
               // laptop
-              className={`relative z-20 object-contain animate-float-laptop laptop w-[44%] md:w-[24rem] lg:w-[26.5rem] mb-6 md:mb-24
+              className={`relative z-20 object-contain animate-float-laptop laptop w-[60%] sm:w-[70%] md:w-[24rem] lg:w-[26.5rem] mb-6 md:mb-24
                 ${hovered ? "active" : ""}`}
             />
             {/* glowing borderline under laptop */}

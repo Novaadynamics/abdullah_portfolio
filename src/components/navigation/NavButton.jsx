@@ -11,6 +11,7 @@ import {
   Phone,
   User,
   Briefcase,
+  Clock,
 } from 'lucide-react';
 
 const getIcon = (icon) => {
@@ -29,6 +30,8 @@ const getIcon = (icon) => {
       return <Linkedin className="h-auto w-full md:w-[2.5rem] lg:w-[2.2rem] " strokeWidth={1.5} />;
     case 'resume':
       return <Notebook className="h-auto w-full md:w-[2.5rem] lg:w-[2.2rem] " strokeWidth={1.5} />;
+    case 'past':
+      return <Clock className="h-auto w-full md:w-[2.5rem] lg:w-[2.2rem] " strokeWidth={1.5} />;
     default:
       return <Home className="h-auto w-full md:w-[2.5rem] lg:w-[2.2rem] " strokeWidth={1.5} />;
   }
@@ -50,18 +53,18 @@ const NavButton = ({ x, y, label, link, icon, newTab, setHovered, hovered }) => 
         name={label}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="group nav-button custom-bg flex items-center justify-center rounded-full text-foreground transition-colors duration-300 bg-[ember-neon]/20"
+        className="group nav-button custom-bg flex items-center justify-center rounded-full text-foreground transition-colors duration-300 bg-[ember-neon]/20 group-hover:behind-glow"
       >
-        <span className="relative flex flex-col items-center h-14 md:h-[4.5rem] lg:h-[4rem] w-14 md:w-[4.5rem] lg:w-[4rem] p-4 text-ember-neon">
+        <span className="relative flex flex-col items-center h-10 sm:h-12 md:h-[3rem] lg:h-[4rem] w-10 sm:w-12 md:w-[3rem] lg:w-[4rem] sm:p-4 p-2.5 text-ember-neon">
           {/* Icon */}
-          <span className="text-lg hover:shadow-lg text-[#f7ba48] group-hover:text-white transition-colors duration-300">
+          <span className="text-lg hover:shadow-lg text-[#ff6d05] group-hover:text-white transition-colors duration-300">
             {getIcon(icon)}
           </span>
 
           <span className="peer absolute left-0 top-0 h-full w-full bg-transparent" />
 
           {/* Label (hidden until hover) */}
-          <span className="mt-4 rounded-md px-2 py-1 text-sm md:text-md text-[#f7ba48] shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className="mt-4 whitespace-nowrap rounded-md px-2 py-1 text-sm md:text-md text-[#ff6d05] shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             {label}
           </span>
         </span>

@@ -19,8 +19,8 @@ const ProjectsBtn = () => {
       name={"Projects"}
       prefetch={false}
     >
-      <span className="relative  w-14 h-14 p-4 hover:text-accent group">
-        <Palette className="w-full h-auto text-[#f7ba48] group-hover:text-white transition-all duration-300" strokeWidth={1.5} />
+      <span className="relative  w-14 h-14 p-4 hover:text-[#ff6d05] group">
+        <Palette className="w-full h-auto text-white group-hover:text-[#ff6d05] transition-all duration-300" strokeWidth={1.5} />
 
         <span className="peer bg-transparent absolute top-0 left-0 w-full h-full" />
 

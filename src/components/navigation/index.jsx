@@ -17,15 +17,18 @@ const Navigation = ({ setHovered, hovered }) => {
   useEffect(() => {
     const updateSize = () => {
       const width = window.innerWidth;
-
-      if (width < 640) {
+      if (width < 500) {
         setScreenSize('mobile');
-        setRadius(80);
-        setMultiplier({ x: 1.6, y: 1.6 });
+        setRadius(60);
+        setMultiplier({ x: 1.4, y: 1.2 });
+      } else if (width < 640) {
+        setScreenSize('mobile');
+        setRadius(60);
+        setMultiplier({ x: 1.6, y: 1.4 });
       } else if (width < 1024) {
         setScreenSize('tablet');
-        setRadius(130);
-        setMultiplier({ x: 1.8, y: 1.4 });
+        setRadius(100);
+        setMultiplier({ x: 1.6, y: 1 });
       } else {
         setScreenSize('desktop');
         setRadius(65);

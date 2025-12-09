@@ -43,7 +43,7 @@
 
   .custom-bg {
     @apply border border-solid;
-    border-color: #eab63e98;
+    border-color: #ff6d05;
     background-color: rgb(var(--background) / 0.2);
     backdrop-filter: blur(6px);
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
@@ -75,15 +75,19 @@
     color: #d3b883;
   }
 
+  .behind-glow {
+    filter:
+      drop-shadow(0 0 10px rgba(255, 106, 0, 0.8)) drop-shadow(0 0 20px rgba(255, 106, 0, 0.6)) drop-shadow(0 0 30px rgba(255, 90, 0, 0.4));
+  }
+
   .text-glow-stroke-neon {
     font-family: "Varela Round", sans-serif;
-    color: #ff6d05;
     --color: #ffffffcf;
     --stroke: #ffffff;
     --blur: 5rem 133px;
     letter-spacing: 2px;
     color: #000e1700;
-    -webkit-text-stroke: 2.8px #f9d174;
+    -webkit-text-stroke: 3px #ff6d05;
     /* Outer-only glow (subtle) */
     filter:
       drop-shadow(0 0 10px rgba(255, 106, 0, 0.8)) drop-shadow(0 0 20px rgba(255, 106, 0, 0.6)) drop-shadow(0 0 30px rgba(255, 90, 0, 0.4));
@@ -151,23 +155,23 @@
 
   /* glowing borderline under laptop  */
   .borderline {
-    border: 1px solid #ffb202;
+    border: 1px solid #ff6d05;
     box-shadow: 0 0 5px #ecbe5cda, 0 0 8px #ffaa2abe, 0 0 11px #ff8d00, 0 0 6px rgb(255, 136, 0), 0 0 5px rgb(255, 136, 0), 0 0 1px rgb(255, 136, 0), 0 0 7px rgb(176, 136, 0);
   }
 
 
   .borderline2 {
-    border: .3px solid #d37d139d;
+    border: .3px solid #ff6d05;
     /* solid border */
     box-shadow:
-      0 0 2px #d37d13e0, 0 0 2px #ffbd0345, 0 0 2px #d37d13e0, 0 0 1px #d37d13e0;
+      0 0 2px #ff6d05e0, 0 0 2px #ffbd0345, 0 0 2px #ff6d05e0, 0 0 1px #ff6d05e0;
   }
 
   .borderline3 {
-    border: .1px solid #d37d1336;
+    border: .1px solid #ff6d05;
     /* solid border */
     box-shadow:
-      0 0 1px #d37d132a, 0 0 4px #ffbd0300, 0 0 2px #d37d133b, 0 0 2px #fde59ce0;
+      0 0 1px #ff6d05, 0 0 4px #ffbd0300, 0 0 2px #ff6d05, 0 0 2px #fde59ce0;
   }
 
   .laptop {
@@ -218,11 +222,11 @@
 
   0%,
   100% {
-    filter: drop-shadow(0 0 0 #d37c13) drop-shadow(0 0 0 #d37c13);
+    filter: drop-shadow(0 0 0 #ff6d05) drop-shadow(0 0 0 #ff6d05);
   }
 
   50% {
-    filter: drop-shadow(0 0 2px #d37d13e0) drop-shadow(0 0 3px #d39013e1);
+    filter: drop-shadow(0 0 2px #ff6d05e0) drop-shadow(0 0 3px #ff6d05e1);
   }
 }
 
@@ -306,7 +310,7 @@
 }
 
 html {
-  scrollbar-color: #ffb03a #222;
+  scrollbar-color: #ff6d05 #222;
   scrollbar-width: thin;
 }
 
