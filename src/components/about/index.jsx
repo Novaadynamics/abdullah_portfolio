@@ -85,7 +85,7 @@ const AboutDetails = () => {
     calculateYears();
 
     // Keep recalculating
-    const intervalId = setInterval(calculateYears, 1000);
+    const intervalId = setInterval(calculateYears, 20000);
     return () => clearInterval(intervalId);
   }, [startDate]);
 

@@ -57,7 +57,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, setHovered, hovered }) => 
       >
         <span className="relative flex flex-col items-center h-10 sm:h-12 md:h-[3rem] lg:h-[4rem] w-10 sm:w-12 md:w-[3rem] lg:w-[4rem] sm:p-4 p-2.5 text-ember-neon">
           {/* Icon */}
-          <span className="text-lg hover:shadow-lg text-[#ff6d05] group-hover:text-white transition-colors duration-300">
+          <span className="text-lg hover:shadow-lg group-hover:text-[#ff6d05] text-white transition-colors duration-300">
             {getIcon(icon)}
           </span>
 
