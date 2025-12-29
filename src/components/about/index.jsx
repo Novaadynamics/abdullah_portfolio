@@ -142,9 +142,10 @@ const AboutDetails = () => {
   useEffect(() => {
     getGithubStats();
 
+    // Fetch every 5 minutes instead of 8 seconds to respect cache and rate limits
     const interval = setInterval(() => {
       getGithubStats();
-    }, 8000);
+    }, 5 * 60 * 1000); // 5 minutes = 300,000ms
 
     return () => clearInterval(interval);
   }, []);

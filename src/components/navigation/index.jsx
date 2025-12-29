@@ -17,7 +17,11 @@ const Navigation = ({ setHovered, hovered }) => {
   useEffect(() => {
     const updateSize = () => {
       const width = window.innerWidth;
-      if (width < 500) {
+      if (width < 480) {
+        setScreenSize('xs-mobile');
+        setRadius(60);
+        setMultiplier({ x: 1.4, y: 1.2 });
+      } else if (width < 500) {
         setScreenSize('mobile');
         setRadius(60);
         setMultiplier({ x: 1.4, y: 1.2 });
@@ -69,15 +73,26 @@ const Navigation = ({ setHovered, hovered }) => {
     <div className="absolute z-0 flex h-1/2 w-full items-center justify-center mx-auto">
       <div className="relative flex w-max items-center justify-center mx-auto">
         {BtnList.map((btn, index) => {
-          const angleDeg = index * angleIncrement + rotation;
-          const angleRad = (angleDeg * Math.PI) / 180;
+          let x, y;
 
-          // Compute x and y based on radius and multiplier
-          let x = radius * Math.cos(angleRad) * multiplier.x;
-          let y = radius * Math.sin(angleRad) * multiplier.y;
+          if (screenSize === 'xs-mobile') {
+            // Vertical line on the left side for screens < 480px
+            x = -window.innerWidth / 2 + 40; // Fixed position on left (40px from edge)
+            const spacing = 60; // Vertical spacing between buttons
+            const totalHeight = BtnList.length * spacing;
+            y = (index - (BtnList.length - 1) / 2) * spacing; // Center vertically
+          } else {
+            // Original elliptical orbit for larger screens
+            const angleDeg = index * angleIncrement + rotation;
+            const angleRad = (angleDeg * Math.PI) / 180;
 
-          const xSpacing = screenSize === 'desktop' ? 1 : screenSize === 'tablet' ? 1.2 : 1.5;
-          x *= xSpacing;
+            // Compute x and y based on radius and multiplier
+            x = radius * Math.cos(angleRad) * multiplier.x;
+            y = radius * Math.sin(angleRad) * multiplier.y;
+
+            const xSpacing = screenSize === 'desktop' ? 1 : screenSize === 'tablet' ? 1.2 : 1.5;
+            x *= xSpacing;
+          }
 
           if (!visibleButtons.includes(btn.label)) return null;
 

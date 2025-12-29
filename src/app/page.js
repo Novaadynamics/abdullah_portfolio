@@ -53,7 +53,7 @@ export default function Home() {
               src={laptop}
               alt="laptop"
               // laptop
-              className={`relative z-20 object-contain animate-float-laptop laptop w-[60%] sm:w-[70%] md:w-[24rem] lg:w-[26.5rem] mb-6 md:mb-24
+              className={`relative z-20 object-contain animate-float-laptop laptop w-[50%] sm:w-[60%] md:w-[18rem] lg:w-[26.5rem] mb-6 md:mb-24
                 ${hovered ? "active" : ""}`}
             />
             {/* glowing borderline under laptop */}
