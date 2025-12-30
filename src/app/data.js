@@ -129,7 +129,7 @@ export const BtnList = [
   },
   {
     label: 'Resume',
-    link: '/Muhammad Abdullah CV.pdf',
+    link: '/muhammad-abdullah-cv.pdf',
     icon: 'resume',
     newTab: false,
   },

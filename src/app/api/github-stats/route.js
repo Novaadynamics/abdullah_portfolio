@@ -5,36 +5,6 @@ import { NextResponse } from "next/server";
 const GITHUB_API = "https://api.github.com/graphql";
 const TOKEN = process.env.GITHUB_TOKEN; // store this securely in your .env.local
 
-// ===== IN-MEMORY CACHE =====
-const cache = new Map();
-const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes in milliseconds
-
-function getCachedData(key) {
-  const cached = cache.get(key);
-  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
-    console.log(`✅ Cache HIT for key: ${key}`);
-    return cached.data;
-  }
-  console.log(`❌ Cache MISS for key: ${key}`);
-  return null;
-}
-
-function setCachedData(key, data) {
-  cache.set(key, { data, timestamp: Date.now() });
-  console.log(`💾 Cache SET for key: ${key}`);
-}
-
-// Cleanup old cache entries every 15 minutes
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, value] of cache.entries()) {
-    if (now - value.timestamp > CACHE_DURATION) {
-      cache.delete(key);
-      console.log(`🗑️ Cache EXPIRED and removed: ${key}`);
-    }
-  }
-}, 15 * 60 * 1000);
-
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const username = searchParams.get("username");
@@ -47,40 +17,11 @@ export async function GET(request) {
     );
   }
 
-  // Create unique cache key
-  const cacheKey = `${username}-${repoName || 'default'}`;
-  
-  // Check cache first
-  const cachedData = getCachedData(cacheKey);
-  if (cachedData) {
-    return NextResponse.json(cachedData, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=300',
-        'X-Cache-Status': 'HIT',
-      },
-    });
-  }
-
   try {
     const languages = await getAllLanguages(username);
     const stats = await fetchGitHubStats(username, repoName);
     const iconsLanguages = await getUserLanguages(username);
-    
-    const responseData = { 
-      languages: languages.slice(0, 6), 
-      stats, 
-      icons: iconsLanguages 
-    };
-    
-    // Store in cache
-    setCachedData(cacheKey, responseData);
-    
-    return NextResponse.json(responseData, {
-      headers: {
-        'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=300',
-        'X-Cache-Status': 'MISS',
-      },
-    });
+    return NextResponse.json({ languages: languages.slice(0, 6), stats, icons: iconsLanguages });
   } catch (error) {
     console.error("GitHub API Error:", error);
     return NextResponse.json(
