@@ -46,7 +46,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, setHovered, hovered }) => 
         transform: `translate(${x}px, ${y}px)`,
       }}
     >
-      <Link
+      <a
         href={link}
         target={newTab ? "_blank" : "_self"}
         aria-label={label}
@@ -68,7 +68,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, setHovered, hovered }) => 
             {label}
           </span>
         </span>
-      </Link>
+      </a>
 
     </div>
   );
