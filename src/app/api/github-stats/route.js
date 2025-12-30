@@ -12,16 +12,16 @@ const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes in milliseconds
 function getCachedData(key) {
   const cached = cache.get(key);
   if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
-    console.log(`✅ Cache HIT for key: ${key}`);
+    console.log(`Cache HIT for key: ${key}`);
     return cached.data;
   }
-  console.log(`❌ Cache MISS for key: ${key}`);
+  console.log(`Cache MISS for key: ${key}`);
   return null;
 }
 
 function setCachedData(key, data) {
   cache.set(key, { data, timestamp: Date.now() });
-  console.log(`💾 Cache SET for key: ${key}`);
+  console.log(`Cache SET for key: ${key}`);
 }
 
 // Cleanup old cache entries every 15 minutes
@@ -30,7 +30,7 @@ setInterval(() => {
   for (const [key, value] of cache.entries()) {
     if (now - value.timestamp > CACHE_DURATION) {
       cache.delete(key);
-      console.log(`🗑️ Cache EXPIRED and removed: ${key}`);
+      console.log(`Cache EXPIRED and removed: ${key}`);
     }
   }
 }, 15 * 60 * 1000);
@@ -223,7 +223,7 @@ async function fetchGitHubStats(username, repoName) {
   const today = new Date().toISOString().split("T")[0];
   const currentYear = new Date().getFullYear();
 
-  // 📅 Helper to format dates
+  // Helper to format dates
   const formatDate = (dateStr) => {
     if (!dateStr) return "N/A";
     const date = new Date(dateStr);
@@ -232,7 +232,7 @@ async function fetchGitHubStats(username, repoName) {
     return date.toLocaleDateString("en-US", options);
   };
 
-  // ⭐ Total stars
+  // Total stars
   const totalStars = user.repositories.nodes.reduce(
     (sum, repo) => sum + repo.stargazerCount,
     0
@@ -249,17 +249,17 @@ async function fetchGitHubStats(username, repoName) {
   const followers = user.followers.totalCount;
   const totalContributions = contributionCalendar.totalContributions;
 
-  // 🧮 Compute streaks
+  // Compute streaks
   const { currentStreak, longestStreak } = computeStreaks(contributionCalendar);
 
-  // 🧠 Replace today's date with "Present" & format
+  // Replace today's date with "Present" & format
   const formatStreakRange = (start, end) => {
     if (!start || !end) return "No data";
     const displayEnd = end === today ? "Present" : formatDate(end);
     return `${formatDate(start)} - ${displayEnd}`;
   };
 
-  // 🎖️ Rank calculation
+  // Rank calculation
   const { level, percentile } = calculateRank({
     all_commits: true,
     commits,
