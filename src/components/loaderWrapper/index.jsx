@@ -52,20 +52,20 @@ export default function LeaderWrapper({ children }) {
                         transition={{ duration: 0.6 }}
                     >
                         {/* Circular progress */}
-                        <div className="relative w-64 h-64 flex items-center justify-center">
+                        <div className="relative w-72 h-72 flex items-center justify-center">
                             {/* animated progress circle */}
                             {!showStartBtn && <svg className="absolute w-full h-full rotate-[-90deg]">
                                 <circle
                                     cx="50%"
                                     cy="50%"
-                                    r="120"
+                                    r="135"
                                     stroke="#ff6d05"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     fill="none"
-                                    strokeDasharray={2 * Math.PI * 120}
+                                    strokeDasharray={2 * Math.PI * 135}
                                     strokeDashoffset={
-                                        2 * Math.PI * 120 * (1 - progress / 100)
+                                        2 * Math.PI * 135 * (1 - progress / 100)
                                     }
                                     style={{ transition: "stroke-dashoffset 0.1s linear" }}
                                 />
@@ -86,13 +86,13 @@ export default function LeaderWrapper({ children }) {
                                 )}
 
                                 {/* LOGO - increased size */}
-                                <div className="w-32 h-32 rounded-full flex items-center justify-center">
+                                <div className="w-40 h-40 rounded-full flex items-center justify-center">
                                     <Image
                                         alt="logo"
                                         width={1000} 
                                         height={1000}
                                         src={logo}
-                                        className="w-32 h-32 object-contain"
+                                        className="w-40 h-40 object-contain"
                                     />
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ export default function LeaderWrapper({ children }) {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
                                 onClick={handleStart}
-                                className="mt-8 px-16 py-4 border-2 border-[#ff6d05] text-[#ff6d05] hover:bg-[#ff6d05] hover:text-black rounded-full text-lg font-medium tracking-[0.2em] transition-all duration-300 uppercase"
+                                className="mt-8 px-16 py-2.5 border-2 border-[#ff6d05] text-[#ff6d05] hover:bg-[#ff6d05] hover:text-black rounded-full text-lg font-medium tracking-[0.2em] transition-all duration-300 uppercase"
                                 style={{ fontFamily: "'Helvetica Neue', 'Arial', sans-serif" }}
                             >
                                 START
