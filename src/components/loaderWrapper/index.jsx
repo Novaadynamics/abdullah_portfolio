@@ -52,57 +52,63 @@ export default function LeaderWrapper({ children }) {
                         transition={{ duration: 0.6 }}
                     >
                         {/* Circular progress */}
-                        <div className="relative w-44 h-44 flex items-center justify-center">
+                        <div className="relative w-64 h-64 flex items-center justify-center">
                             {/* animated progress circle */}
                             {!showStartBtn && <svg className="absolute w-full h-full rotate-[-90deg]">
                                 <circle
                                     cx="50%"
                                     cy="50%"
-                                    r="80"
+                                    r="120"
                                     stroke="#ff6d05"
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     fill="none"
-                                    strokeDasharray={2 * Math.PI * 80}
+                                    strokeDasharray={2 * Math.PI * 120}
                                     strokeDashoffset={
-                                        2 * Math.PI * 80 * (1 - progress / 100)
+                                        2 * Math.PI * 120 * (1 - progress / 100)
                                     }
                                     style={{ transition: "stroke-dashoffset 0.1s linear" }}
                                 />
                             </svg>}
 
-                            {/* LOGO */}
-                            <div className="w-20 h-20 rounded-full flex items-center justify-center">
-                                <Image
-                                    alt="logo"
-                                    width={1000} height={1000}
-                                    src={logo}
-                                    className="w-20 h-20 object-contain"
-                                />
+                            {/* Inner container for percentage and logo */}
+                            <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                {/* % text - positioned above logo */}
+                                {!showStartBtn && (
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        className="text-[#ff6d05] text-xl font-medium mb-6"
+                                        style={{ fontFamily: "'Helvetica Neue', 'Arial', sans-serif" }}
+                                    >
+                                        {progress}%
+                                    </motion.div>
+                                )}
+
+                                {/* LOGO - increased size */}
+                                <div className="w-32 h-32 rounded-full flex items-center justify-center">
+                                    <Image
+                                        alt="logo"
+                                        width={1000} 
+                                        height={1000}
+                                        src={logo}
+                                        className="w-32 h-32 object-contain"
+                                    />
+                                </div>
                             </div>
                         </div>
 
-                        {/* % text */}
-                        {!showStartBtn && (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="text-[#ff6d05] text-base mt-4"
-                            >
-                                {progress}%
-                            </motion.div>
-                        )}
-
-                        {/* Start Button */}
+                        {/* Start Button - pill shaped with rounded ends */}
                         {showStartBtn && (
                             <motion.button
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
                                 onClick={handleStart}
-                                className="mt-6 px-6 py-3 border border-[#ff6d05] text-[#ff6d05] hover:bg-[#ff6d05] hover:text-black rounded-xl text-lg font-bold transition"
+                                className="mt-8 px-16 py-4 border-2 border-[#ff6d05] text-[#ff6d05] hover:bg-[#ff6d05] hover:text-black rounded-full text-lg font-medium tracking-[0.2em] transition-all duration-300 uppercase"
+                                style={{ fontFamily: "'Helvetica Neue', 'Arial', sans-serif" }}
                             >
-                                Start
+                                START
                             </motion.button>
                         )}
                     </motion.div>
