@@ -20,7 +20,7 @@ const HomeBtn = () => {
       prefetch={false}
     >
       <span className="relative  w-14 h-14 p-4 hover:text-[#ff6d05] group">
-        <Home className="w-full h-auto text-white group-hover:text-[#ff6d05] transition-all duration-300" strokeWidth={1.5} />
+        <Home className="w-full h-auto text-[#ff6d05] group-hover:text-[#ff6d05] transition-all duration-300" strokeWidth={1.5} />
 
         <span className="peer bg-transparent absolute top-0 left-0 w-full h-full" />
 
