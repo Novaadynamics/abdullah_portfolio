@@ -26,7 +26,7 @@ export default function StreakStatsCard({ data, isUpdated }) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="absolute inset-0 flex items-center justify-center bg-orange-500/80 backdrop-blur-xl text-white font-medium text-lg md:text-xl rounded-lg z-10"
+                        className="absolute inset-0 flex items-center justify-center bg-orange-500/80 backdrop-blur-xl text-[#ff6d05] font-medium text-lg md:text-xl rounded-lg z-10"
                     >
                         <span className="">
                             This streak data has been updated
@@ -127,7 +127,7 @@ function AnimatedStatBlock({ title, value, dateRange, isInView, align = "center"
             <AnimatedNumber
                 target={value}
                 isInView={isInView}
-                className="text-2xl md:text-3xl font-bold text-white mb-2 text-center w-full"
+                className="text-2xl md:text-3xl font-bold text-[#ff6d05] mb-2 text-center w-full"
             />
             <div className="text-sm md:text-base mb-1 w-full font-semibold text-shadow-neon-light-orange" style={{ textShadow: "none" }}>{title}</div>
             <div className="text-[10px] sm:text-xs md:text-sm w-full text-shadow-neon-light-orange font-light" style={{ textShadow: "none" }}>{dateRange}</div>

@@ -138,7 +138,7 @@ export default function Form() {
         {/* <motion.input
           variants={item}
           value="Cast your message!"
-          className="cursor-pointer py-2.5 px-3 rounded-md border border-ember-neon bg-yellow-400/10 backdrop-blur-md  text-white hover:shadow-[inset_0_4px_12px_rgba(251,191,36,0.25)]"
+          className="cursor-pointer py-2.5 px-3 rounded-md border border-ember-neon bg-yellow-400/10 backdrop-blur-md  text-[#ff6d05] hover:shadow-[inset_0_4px_12px_rgba(251,191,36,0.25)]"
           type="submit"
         /> */}
 
@@ -198,7 +198,7 @@ export default function Form() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white text-2xl shadow-[0_0_15px_#00ff9d]"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-[#ff6d05] text-2xl shadow-[0_0_15px_#00ff9d]"
               onAnimationComplete={() => {
                 setTimeout(() => setLaunch(false), 2000); // show for 2 seconds
               }}

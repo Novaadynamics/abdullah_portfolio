@@ -42,7 +42,7 @@ export default function ReadmeStatsCard({ data, isUpdated }) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="absolute inset-0 flex items-center justify-center bg-orange-500/80 backdrop-blur-xl text-white font-medium text-lg md:text-xl rounded-lg z-10"
+                        className="absolute inset-0 flex items-center justify-center bg-orange-500/80 backdrop-blur-xl text-[#ff6d05] font-medium text-lg md:text-xl rounded-lg z-10"
                     >
                         <span className="">
                             Information in this section has been updated
@@ -54,7 +54,7 @@ export default function ReadmeStatsCard({ data, isUpdated }) {
             {/* Title */}
             <motion.div variants={itemVariants} className="flex items-center gap-2 mb-3">
                 <Monitor className="w-5 h-5 text-shadow-neon-light-orange" />
-                <h3 className="text-xl font-semibold text-white text-shadow-neon-orange">{title}</h3>
+                <h3 className="text-xl font-semibold text-[#ff6d05] text-shadow-neon-orange">{title}</h3>
             </motion.div>
 
             {/* Description */}

@@ -124,7 +124,7 @@ export default function ThreeDScene({ params }) {
 
     if (!project) {
         return (
-            <div className="w-full h-screen flex items-center justify-center bg-black text-white text-3xl">
+            <div className="w-full h-screen flex items-center justify-center bg-black text-[#ff6d05] text-3xl">
                 Project not found.
             </div>
         )

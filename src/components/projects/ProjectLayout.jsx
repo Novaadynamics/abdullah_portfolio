@@ -27,7 +27,7 @@ const ProjectLayout = ({ id, name, description, date, demoLink, category }) => {
       <div className="flex items-center justify-center space-x-2">
         <h2 className="text-shadow-neon-orange">{name}</h2>
         <p
-          className="text-white hidden sm:inline-block text-shadow-neon-orange"
+          className="text-[#ff6d05] hidden sm:inline-block text-shadow-neon-orange"
           style={{ textShadow: "none" }}
         >
           {description}
@@ -38,7 +38,7 @@ const ProjectLayout = ({ id, name, description, date, demoLink, category }) => {
 
       <p
         id="date"
-        className="text-white text-shadow-neon-orange"
+        className="text-[#ff6d05] text-shadow-neon-orange"
         style={{ textShadow: "none" }}
       >
         {new Date(date).toDateString()}

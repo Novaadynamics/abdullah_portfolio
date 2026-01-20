@@ -152,7 +152,7 @@ const Carousel3D = () => {
                         return (
                             <div
                                 key={card.id}
-                                className="absolute w-auto h-full py-6 text-white rounded-2xl flex flex-col items-center justify-between text-xl font-bold gap-6"
+                                className="absolute w-auto h-full py-6 text-[#ff6d05] rounded-2xl flex flex-col items-center justify-between text-xl font-bold gap-6"
                                 style={{
                                     transform: hasAnimated
                                         ? `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`

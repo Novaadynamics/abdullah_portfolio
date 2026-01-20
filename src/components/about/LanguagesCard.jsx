@@ -24,7 +24,7 @@ export default function LanguagesCard({ data, isUpdated }) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="absolute inset-0 flex items-center justify-center bg-orange-500/80 backdrop-blur-xl text-white font-medium text-lg md:text-xl rounded-lg z-10"
+                        className="absolute inset-0 flex items-center justify-center bg-orange-500/80 backdrop-blur-xl text-[#ff6d05] font-medium text-lg md:text-xl rounded-lg z-10"
                     >
                         This table has been updated
                     </motion.div>

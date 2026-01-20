@@ -31,7 +31,7 @@ export default function Home() {
             Muhammad<br /> <span className='md:mr-7'>Abdullah</span>  
           </h1> */}
           <h1
-            className="text-transparent text-center text-[3rem] font-[500] uppercase leading-none md:text-[6rem] lg:text-[7rem] text-glow-stroke-neon"
+            className="text-transparent text-center text-[5rem] font-[500] uppercase leading-none md:text-[6rem] lg:text-[7rem] text-glow-stroke-neon"
           >
             Muhammad<br /> Abdullah
           </h1>
@@ -39,7 +39,7 @@ export default function Home() {
           {/* <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 text-[3rem] font-light uppercase leading-snug md:text-[3rem] lg:text-[3.3rem]">
             Software Developer
           </h2> */}
-          <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 !text-[1rem] font-light uppercase leading-snug md:!text-[1.2rem] lg:!text-[1.5rem]">
+          <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 !text-[1.8rem] font-light uppercase leading-snug md:!text-[1.2rem] lg:!text-[1.5rem]">
             Software Engineer
           </h2>
 
@@ -53,24 +53,24 @@ export default function Home() {
               src={laptop}
               alt="laptop"
               // laptop
-              className={`relative z-20 object-contain animate-float-laptop laptop w-[50%] sm:w-[60%] md:w-[18rem] lg:w-[26.5rem] mb-6 md:mb-24
+              className={`relative z-20 object-contain animate-float-laptop laptop w-[70%] sm:w-[80%] md:w-[24rem] lg:w-[35rem] mb-6 md:mb-24
                 ${hovered ? "active" : ""}`}
             />
             {/* glowing borderline under laptop */}
             <div
-              className="absolute mt-16 h-[160px] w-[160px] sm:h-[220px] sm:w-[220px] md:h-[300px] md:w-[300px] lg:h-[360px] lg:w-[360px]
+              className="absolute mt-16 h-[220px] w-[220px] sm:h-[300px] sm:w-[300px] md:h-[420px] md:w-[420px] lg:h-[500px] lg:w-[500px]
                           rounded-full -neon borderline animate-ripple-neon"
               style={{ transform: "perspective(600px) rotateX(80deg)" }}
             />
 
             <div
-              className="absolute mt-16 h-[220px] w-[220px] sm:h-[300px] sm:w-[300px] md:h-[400px] md:w-[400px] lg:h-[460px] lg:w-[460px]
+              className="absolute mt-16 h-[300px] w-[300px] sm:h-[420px] sm:w-[420px] md:h-[560px] md:w-[560px] lg:h-[640px] lg:w-[640px]
                           rounded-full -neon borderline2 animate-ripple-neon"
               style={{ transform: "perspective(600px) rotateX(80deg)" }}
             />
 
             <div
-              className="absolute mt-16 h-[320px] w-[320px] sm:h-[480px] sm:w-[480px] md:h-[600px] md:w-[600px] lg:h-[580px] lg:w-[580px]
+              className="absolute mt-16 h-[440px] w-[440px] sm:h-[660px] sm:w-[660px] md:h-[840px] md:w-[840px] lg:h-[800px] lg:w-[800px]
                           rounded-full -neon borderline3 animate-ripple-neon"
               style={{ transform: "perspective(600px) rotateX(80deg)" }}
             />
