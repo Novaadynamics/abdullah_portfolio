@@ -19,24 +19,24 @@ const Navigation = ({ setHovered, hovered }) => {
       const width = window.innerWidth;
       if (width < 480) {
         setScreenSize('xs-mobile');
-        setRadius(85);
-        setMultiplier({ x: 1.6, y: 0.8 });
+        setRadius(110);
+        setMultiplier({ x: 1.6, y: 0.5 });
       } else if (width < 500) {
         setScreenSize('mobile');
-        setRadius(85);
-        setMultiplier({ x: 1.6, y: 0.8 });
+        setRadius(110);
+        setMultiplier({ x: 1.6, y: 0.5 });
       } else if (width < 640) {
         setScreenSize('mobile');
-        setRadius(85);
-        setMultiplier({ x: 1.8, y: 0.9 });
+        setRadius(110);
+        setMultiplier({ x: 1.8, y: 0.55 });
       } else if (width < 1024) {
         setScreenSize('tablet');
-        setRadius(140);
-        setMultiplier({ x: 1.8, y: 0.7 });
+        setRadius(180);
+        setMultiplier({ x: 1.8, y: 0.45 });
       } else {
         setScreenSize('desktop');
-        setRadius(90);
-        setMultiplier({ x: 7.5, y: 1.5 });
+        setRadius(120);
+        setMultiplier({ x: 7.5, y: 0.9 });
       }
     };
 

@@ -16,7 +16,7 @@ const ProjectsBtn = () => {
         custom-bg fixed top-4 left-4 w-fit self-start z-50
         "
       aria-label={"Projects"}
-      name={"Projects"}
+      name={"Projects"}                         
       prefetch={false}
     >
       <span className="relative  w-14 h-14 p-4 hover:text-[#ff6d05] group">

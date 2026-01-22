@@ -17,23 +17,23 @@ import {
 const getIcon = (icon) => {
   switch (icon) {
     case 'about':
-      return <User className="h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <User className="h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     case 'projects':
-      return <Palette className=" h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Palette className=" h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     case 'qualifications':
-      return <Briefcase className=" h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Briefcase className=" h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     case 'contact':
-      return <Phone className="h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Phone className="h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     case 'github':
-      return <Github className="h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Github className="h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     case 'linkedin':
-      return <Linkedin className="h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Linkedin className="h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     case 'resume':
-      return <Notebook className="h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Notebook className="h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     case 'past':
-      return <Clock className="h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Clock className="h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
     default:
-      return <Home className="h-auto w-full md:w-[2.8rem] lg:w-[3.2rem] " strokeWidth={1.5} />;
+      return <Home className="h-auto w-full md:w-[3.5rem] lg:w-[4rem] " strokeWidth={1.5} />;
   }
 };
 
@@ -55,7 +55,7 @@ const NavButton = ({ x, y, label, link, icon, newTab, setHovered, hovered }) => 
         onMouseLeave={() => setHovered(false)}
         className="group nav-button custom-bg flex items-center justify-center rounded-full text-foreground transition-all duration-300 bg-[ember-neon]/20"
       >
-        <span className="relative flex flex-col items-center h-12 sm:h-16 md:h-[4.5rem] lg:h-[5rem] w-12 sm:w-16 md:w-[4.5rem] lg:w-[5rem] sm:p-5 md:p-[0.75rem] lg:p-5 p-3 text-ember-neon">
+        <span className="relative flex flex-col items-center h-16 sm:h-20 md:h-[5.5rem] lg:h-[6rem] w-16 sm:w-20 md:w-[5.5rem] lg:w-[6rem] sm:p-5 md:p-[0.85rem] lg:p-5 p-4 text-ember-neon">
           {/* Icon */}
           <span className="text-lg hover:shadow-lg group-hover:text-[#ff6d05] text-white transition-colors duration-300">
             {getIcon(icon)}

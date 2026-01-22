@@ -72,64 +72,80 @@ export default function Form() {
           <h2 className="text-[2em] text-amethyst-neon">Message Me</h2>
         </motion.div> */}
 
-        <motion.input
-          variants={item}
-          type="text"
-          placeholder="Full Name"
-          {...register('name', {
-            required: 'This field is required!',
-            minLength: {
-              value: 3,
-              message: 'Name should be atleast 3 characters long.',
-            },
-          })}
-          className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
-        />
+        <motion.div variants={item} className="w-full">
+          <label htmlFor="name" className="sr-only">Full Name</label>
+          <motion.input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Full Name"
+            {...register('name', {
+              required: 'This field is required!',
+              minLength: {
+                value: 3,
+                message: 'Name should be atleast 3 characters long.',
+              },
+            })}
+            className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
+          />
+        </motion.div>
         {errors.name && (
           <span className="inline-block self-start text-accent">
             {errors.name.message}
           </span>
         )}
-        <motion.input
-          variants={item}
-          type="email"
-          placeholder="Email"
-          {...register('email', { required: 'This field is required!' })}
-          className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
-        />
+        <motion.div variants={item} className="w-full">
+          <label htmlFor="email" className="sr-only">Email</label>
+          <motion.input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            {...register('email', { required: 'This field is required!' })}
+            className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
+          />
+        </motion.div>
         {errors.email && (
           <span className="inline-block self-start text-accent">
             {errors.email.message}
           </span>
         )}
-        <motion.input
-          variants={item}
-          type="text"
-          placeholder="Subject"
-          {...register('subject', { required: 'This field is required!' })}
-          className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
-        />
+        <motion.div variants={item} className="w-full">
+          <label htmlFor="subject" className="sr-only">Subject</label>
+          <motion.input
+            id="subject"
+            name="subject"
+            type="text"
+            placeholder="Subject"
+            {...register('subject', { required: 'This field is required!' })}
+            className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
+          />
+        </motion.div>
         {errors.subject && (
           <span className="inline-block self-start text-accent">
             {errors.subject.message}
           </span>
         )}
-        <motion.textarea
-          variants={item}
-          placeholder="Message"
-          {...register('message', {
-            required: 'This field is required!',
-            maxLength: {
-              value: 500,
-              message: 'Message should be less than 500 characters',
-            },
-            minLength: {
-              value: 50,
-              message: 'Message should be more than 50 characters',
-            },
-          })}
-          className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
-        />
+        <motion.div variants={item} className="w-full">
+          <label htmlFor="message" className="sr-only">Message</label>
+          <motion.textarea
+            id="message"
+            name="message"
+            placeholder="Message"
+            {...register('message', {
+              required: 'This field is required!',
+              maxLength: {
+                value: 500,
+                message: 'Message should be less than 500 characters',
+              },
+              minLength: {
+                value: 50,
+                message: 'Message should be more than 50 characters',
+              },
+            })}
+            className="custom-bg-2 w-full rounded-md p-2 text-foreground shadow-lg focus:outline-none focus:ring-2 focus:ring-accent/50 hover:shadow-[0_0_15px_#5c0099]"
+          />
+        </motion.div>
         {errors.message && (
           <span className="inline-block self-start text-accent">
             {errors.message.message}

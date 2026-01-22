@@ -12,7 +12,7 @@ export default function Home() {
       {/* full-screen, semi-opaque bg image */}
       <Image
         priority
-        src={bg}
+        src={bg}   
         alt="background"
         fill
         sizes="100vw"
@@ -31,7 +31,7 @@ export default function Home() {
             Muhammad<br /> <span className='md:mr-7'>Abdullah</span>  
           </h1> */}
           <h1
-            className="text-transparent text-center text-[5rem] font-[500] uppercase leading-none md:text-[6rem] lg:text-[7rem] text-glow-stroke-neon"
+            className="text-transparent text-center text-[3rem] font-[500] uppercase leading-none md:text-[5rem] lg:text-[7rem] text-glow-stroke-neon"
           >
             Muhammad<br /> Abdullah
           </h1>
@@ -39,7 +39,7 @@ export default function Home() {
           {/* <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 text-[3rem] font-light uppercase leading-snug md:text-[3rem] lg:text-[3.3rem]">
             Software Developer
           </h2> */}
-          <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 !text-[1.8rem] font-light uppercase leading-snug md:!text-[1.2rem] lg:!text-[1.5rem]">
+          <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 !text-[1rem] font-light uppercase leading-snug md:!text-[1.8rem] lg:!text-[1.5rem]">
             Software Engineer
           </h2>
 
@@ -53,7 +53,7 @@ export default function Home() {
               src={laptop}
               alt="laptop"
               // laptop
-              className={`relative z-20 object-contain animate-float-laptop laptop w-[70%] sm:w-[80%] md:w-[24rem] lg:w-[35rem] mb-6 md:mb-24
+              className={`relative z-20 object-contain animate-float-laptop laptop w-[85%] sm:w-[95%] md:w-[32rem] lg:w-[45rem] mb-6 md:mb-24
                 ${hovered ? "active" : ""}`}
             />
             {/* glowing borderline under laptop */}
