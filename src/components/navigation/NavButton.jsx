@@ -53,18 +53,18 @@ const NavButton = ({ x, y, label, link, icon, newTab, setHovered, hovered }) => 
         name={label}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="group nav-button custom-bg flex items-center justify-center rounded-full text-foreground transition-all duration-300 bg-[ember-neon]/20"
+        className="group nav-button custom-bg flex items-center justify-center rounded-full transition-all duration-300"
       >
-        <span className="relative flex flex-col items-center h-16 sm:h-20 md:h-[5.5rem] lg:h-[6rem] w-16 sm:w-20 md:w-[5.5rem] lg:w-[6rem] sm:p-5 md:p-[0.85rem] lg:p-5 p-4 text-ember-neon">
+        <span className="relative flex flex-col items-center h-16 sm:h-20 md:h-[5.5rem] lg:h-[6rem] w-16 sm:w-20 md:w-[5.5rem] lg:w-[6rem] sm:p-5 md:p-[0.85rem] lg:p-5 p-4">
           {/* Icon */}
-          <span className="text-lg hover:shadow-lg group-hover:text-[#ff6d05] text-white transition-colors duration-300">
+          <span className="text-lg text-white group-hover:text-[#ff6d05] transition-colors duration-300">
             {getIcon(icon)}
           </span>
 
           <span className="peer absolute left-0 top-0 h-full w-full bg-transparent" />
 
           {/* Label (hidden until hover) */}
-          <span className="sm:mt-4 mt-2 whitespace-nowrap rounded-md px-2 py-1 text-sm md:text-md text-[#ff6d05] shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <span className="sm:mt-4 mt-2 whitespace-nowrap rounded-md px-2 py-1 text-sm md:text-md text-[#ff6d05] shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300">
             {label}
           </span>
         </span>
