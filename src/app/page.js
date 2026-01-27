@@ -22,24 +22,13 @@ export default function Home() {
 
         {/* HEADLINE */}
         <div className="z-50 pt-14 text-center">
-          {/* <h1
-            className="text-transparent text-center md:text-right text-[4rem] font-[500] uppercase leading-none md:text-[5.9rem] lg:text-[6.5rem] text-glow-stroke-neon"
-            style={{
-              // textShadow: "0 0 10px #fcf699, 0 0 20px #fcf699, 0 0 40px #fcf699"
-            }}
-          >
-            Muhammad<br /> <span className='md:mr-7'>Abdullah</span>  
-          </h1> */}
           <h1
             className="text-transparent text-center text-[5rem] font-[500] uppercase leading-none md:text-[6rem] lg:text-[7rem] text-glow-stroke-neon"
           >
             Muhammad<br /> Abdullah
           </h1>
 
-          {/* <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 text-[3rem] font-light uppercase leading-snug md:text-[3rem] lg:text-[3.3rem]">
-            Software Developer
-          </h2> */}
-          <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 !text-[1.8rem] font-light uppercase leading-snug md:!text-[1.2rem] lg:!text-[1.5rem]">
+          <h2 className="text-amethyst-neon text-glow-stroke-purple mt-1 text-[1.8rem] font-light uppercase leading-snug md:text-[2rem] lg:text-[2.2rem]">
             Software Engineer
           </h2>
 
