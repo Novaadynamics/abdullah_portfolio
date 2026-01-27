@@ -1,5 +1,5 @@
 "use client"
-import HomeBtn from "@/components/HomeBtn";
+import HomeBtn from "@/components/qualifications/HomeBtn";
 import ProjectsBtn from "@/components/ProjectsBtn";
 import { usePathname } from "next/navigation";
 
