@@ -24,7 +24,14 @@ export default function Contact() {
           <h1 className="text-center text-2xl font-extrabold uppercase text-glow-stroke-neon sm:text-5xl">
             CONTACT ME
           </h1>
-          <h2 className="text-center text-lg font-semibold uppercase tracking-wider glitter-text sm:text-xl">
+          <h2 
+            className="text-center text-lg font-semibold uppercase tracking-wider sm:text-xl"
+            style={{
+              color: 'rgb(252 131 255 / var(--tw-text-opacity, 1))',
+              textShadow: '0 0 5px #ff55f7, 0 0 10px #ff55f7, 0 0 20px #ff55f7',
+              '--tw-text-opacity': '1'
+            }}
+          >
             – get in touch –
           </h2>
           <p className="xs:text-base text-shadow-neon-light-orange text-center text-sm font-light">

@@ -31,12 +31,12 @@ const Navigation = ({ setHovered, hovered }) => {
         setMultiplier({ x: 1.8, y: 0.55 });
       } else if (width < 1024) {
         setScreenSize('tablet');
-        setRadius(180);
-        setMultiplier({ x: 1.8, y: 0.45 });
+        setRadius(160);
+        setMultiplier({ x: 1.8, y: 0.55 });
       } else {
         setScreenSize('desktop');
-        setRadius(120);
-        setMultiplier({ x: 7.5, y: 0.9 });
+        setRadius(170);
+        setMultiplier({ x: 2.5, y: 1.2 });
       }
     };
 

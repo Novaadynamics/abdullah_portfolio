@@ -29,7 +29,14 @@ export default function About() {
         >
           ABOUT ME
         </h1>
-        <div className="flex items-center justify-center gap-4 glitter-text mt-1 text-[1rem] font-semibold uppercase leading-snug md:text-[1.6rem]">
+        <div 
+          className="flex items-center justify-center gap-4 mt-1 text-[1rem] font-semibold uppercase leading-snug md:text-[1.6rem]"
+          style={{
+            color: 'rgb(252 131 255 / var(--tw-text-opacity, 1))',
+            textShadow: '0 0 5px #ff55f7, 0 0 10px #ff55f7, 0 0 20px #ff55f7',
+            '--tw-text-opacity': '1'
+          }}
+        >
           <div className="w-6 h-[2px] drop-shadow-[0_0_6px_#ffb03a] glitter-bg" />
           <span>WHO I AM</span>
           <div className="w-6 h-[2px] drop-shadow-[0_0_6px_#ffb03a] glitter-bg" />

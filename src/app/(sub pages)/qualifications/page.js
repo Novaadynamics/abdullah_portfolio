@@ -17,7 +17,14 @@ const page = () => {
         >
           QUALIFICATION
         </h1>
-        <h2 className="glitter-text mt-1 text-[1rem] font-semibold leading-snug md:text-[1.6rem]">
+        <h2 
+          className="mt-1 text-[1rem] font-semibold leading-snug md:text-[1.6rem]"
+          style={{
+            color: 'rgb(252 131 255 / var(--tw-text-opacity, 1))',
+            textShadow: '0 0 5px #ff55f7, 0 0 10px #ff55f7, 0 0 20px #ff55f7',
+            '--tw-text-opacity': '1'
+          }}
+        >
           -accomplishments-
         </h2>
       </div>

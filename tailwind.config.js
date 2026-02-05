@@ -44,7 +44,7 @@ module.exports = {
 
       backgroundImage: {
         "firefly-radial":
-          "radial-gradient(50% 50% at 50% 50%, rgba(253, 255, 80, 0.5) 0%, rgba(217,217,217, 0) 100%)",
+          "radial-gradient(50% 50% at 50% 50%, rgba(255, 109, 5, 0.5) 0%, rgba(217,217,217, 0) 100%)",
       },
       boxShadow: {
         "glass-inset": "inset 0 17px 5px -9px rgba(254,254,91, 0.05)",

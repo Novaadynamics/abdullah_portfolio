@@ -61,6 +61,7 @@ export default function Form() {
 
   return (
     <>
+      <Toaster richColors position="top-center" />
       <motion.form
         variants={container}
         initial="hidden"
@@ -90,7 +91,7 @@ export default function Form() {
           />
         </motion.div>
         {errors.name && (
-          <span className="inline-block self-start text-accent">
+          <span className="inline-block self-start" style={{ color: '#ff6d05' }}>
             {errors.name.message}
           </span>
         )}
@@ -106,7 +107,7 @@ export default function Form() {
           />
         </motion.div>
         {errors.email && (
-          <span className="inline-block self-start text-accent">
+          <span className="inline-block self-start" style={{ color: '#ff6d05' }}>
             {errors.email.message}
           </span>
         )}
@@ -122,7 +123,7 @@ export default function Form() {
           />
         </motion.div>
         {errors.subject && (
-          <span className="inline-block self-start text-accent">
+          <span className="inline-block self-start" style={{ color: '#ff6d05' }}>
             {errors.subject.message}
           </span>
         )}
@@ -147,7 +148,7 @@ export default function Form() {
           />
         </motion.div>
         {errors.message && (
-          <span className="inline-block self-start text-accent">
+          <span className="inline-block self-start" style={{ color: '#ff6d05' }}>
             {errors.message.message}
           </span>
         )}
@@ -164,62 +165,87 @@ export default function Form() {
               key="submit"
               type="submit"
               value="SEND MESSAGE!"
-              className="cursor-pointer py-1.5 px-5 rounded-full custom-bg-abt text-shadow-neon-light-orange font-semibold tracking-wide shadow-sm"
-              whileHover={{ scale: 1.05 }}
+              className="cursor-pointer py-2 px-6 rounded-full custom-bg-abt text-shadow-neon-light-orange font-semibold tracking-wide shadow-sm hover:shadow-[0_0_20px_rgba(255,109,5,0.6)] transition-all duration-300"
+              whileHover={{ scale: 1.08, y: -2 }}
               whileTap={{ scale: 0.95 }}
+              initial={{ scale: 1 }}
             />
           ) : launch === "rocket" ? (
             <motion.div
               key="rocket"
-              initial={{ scale: 1, opacity: 1 }}
-              animate={{ x: 400, opacity: 0 }}
-              transition={{ duration: 1.4, ease: "easeIn" }}
+              initial={{ scale: 1, opacity: 1, y: 0 }}
+              animate={{ y: -500, opacity: 0 }}
+              transition={{ duration: 1.4, ease: "easeIn", delay: 0.6 }}
               className="relative flex flex-col items-center"
               onAnimationComplete={() => setLaunch("check")}
             >
               {/* 🚀 Rocket Body */}
               <motion.div
-                initial={{ x: 0, rotate: 90 }}
+                initial={{ rotate: 0 }}
                 animate={{
-                  x: [0, -2, 0, 2, 0],
+                  x: [0, -3, 3, -3, 3, 0],
+                  rotate: [0, -2, 2, -2, 2, 0]
                 }}
-                transition={{ duration: 0.4, repeat: 3 }}
-                className="relative w-8 h-16 bg-gradient-to-b from-gray-200 to-gray-500 rounded-full border border-white shadow-lg"
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="relative w-10 h-20 bg-gradient-to-b from-gray-100 via-gray-300 to-gray-500 rounded-t-full rounded-b-lg border-2 border-gray-400 shadow-[0_0_20px_rgba(255,109,5,0.6)]"
               >
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-0 h-0 
-                border-l-[16px] border-r-[16px] border-b-[20px] 
-                border-l-transparent border-r-transparent border-b-gray-400" />
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-sky-400 border border-white shadow-md" />
-                <div className="absolute -bottom-2 -left-3 w-4 h-4 bg-red-500 rotate-45 rounded-sm shadow-md" />
-                <div className="absolute -bottom-2 -right-3 w-4 h-4 bg-red-500 -rotate-45 rounded-sm shadow-md" />
+                {/* Rocket Nose Cone */}
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-0 h-0 
+                border-l-[20px] border-r-[20px] border-b-[24px] 
+                border-l-transparent border-r-transparent border-b-red-500 shadow-lg" />
+                
+                {/* Window */}
+                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-gradient-to-br from-sky-300 to-sky-600 border-2 border-gray-600 shadow-inner" />
+                
+                {/* Fins */}
+                <div className="absolute -bottom-1 -left-4 w-5 h-8 bg-gradient-to-br from-red-500 to-red-700 rotate-12 rounded-sm shadow-lg border border-red-800" />
+                <div className="absolute -bottom-1 -right-4 w-5 h-8 bg-gradient-to-bl from-red-500 to-red-700 -rotate-12 rounded-sm shadow-lg border border-red-800" />
+                
+                {/* Flame/Exhaust */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0.8 }}
-                  animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
-                  transition={{ repeat: Infinity, duration: 0.3 }}
-                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-6 h-10 bg-gradient-to-b from-yellow-400 via-orange-500 to-red-600 rounded-full blur-md"
+                  animate={{ 
+                    scale: [1, 1.4, 1.2, 1.5, 1], 
+                    opacity: [1, 0.8, 0.9, 0.7, 1],
+                    scaleY: [1, 1.3, 1.1, 1.4, 1]
+                  }}
+                  transition={{ repeat: Infinity, duration: 0.2 }}
+                  className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-8 h-12 bg-gradient-to-b from-yellow-300 via-orange-500 to-red-600 rounded-full blur-sm shadow-[0_0_20px_rgba(255,165,0,0.8)]"
                 />
               </motion.div>
 
+              {/* Glowing Trail */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: [0.8, 0.4, 0], scale: [1, 1.2, 0.9], y: [0, 60, 120] }}
-                transition={{ duration: 2.4, ease: "easeOut" }}
-                className="absolute top-12 left-1/2 -translate-x-1/2 w-4 h-40 bg-gradient-to-b from-yellow-300 via-orange-500 to-transparent blur-xl rounded-full"
+                initial={{ opacity: 0, scale: 0.8, height: 0 }}
+                animate={{ 
+                  opacity: [0, 0.9, 0.7, 0.5, 0], 
+                  scale: [0.8, 1, 1.2, 1.3, 1],
+                  height: [0, 100, 200, 300, 400]
+                }}
+                transition={{ duration: 1.8, ease: "easeOut" }}
+                className="absolute top-16 left-1/2 -translate-x-1/2 w-6 bg-gradient-to-b from-orange-400 via-orange-600 to-transparent blur-xl rounded-full shadow-[0_0_30px_rgba(255,109,5,0.8)]"
               />
             </motion.div>
           ) : (
             <motion.div
               key="checkmark"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              initial={{ scale: 0, opacity: 0, rotate: -180 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0 }}
               exit={{ scale: 0, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-[#ff6d05] text-2xl shadow-[0_0_15px_#00ff9d]"
+              transition={{ duration: 0.5, ease: "backOut" }}
+              className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 border-2 border-green-300 shadow-[0_0_25px_rgba(34,197,94,0.8),0_0_50px_rgba(34,197,94,0.4)]"
               onAnimationComplete={() => {
                 setTimeout(() => setLaunch(false), 2000); // show for 2 seconds
               }}
             >
-              ✓
+              <motion.span 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                className="text-white text-4xl font-bold"
+              >
+                ✓
+              </motion.span>
             </motion.div>
           )}
         </AnimatePresence>
